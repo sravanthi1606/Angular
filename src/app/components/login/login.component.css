@@ -1,0 +1,46 @@
+.form {
+    border: 1px solid rgb(15, 85, 125);
+    padding: 20px 0px 20px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
+    margin: 50% 0px;
+} 
+
+.login {
+    width: 100%;
+    padding: 7px;
+    border: none;
+    background-color: rgb(21, 131, 194);
+    color: white;
+    border-radius: 10px;
+} 
+
+label {
+    padding-right: 3px;
+}
+
+.sign {
+    text-align: center;
+    padding: 10px 0px;
+}
+
+input .ng-invalid .ng-touched {
+    border: 2px solid red;
+}
+
+small {
+    color: red;
+    font-weight: bold;
+}
+
+.btn-disable {
+    cursor: not-allowed;
+}
+
+.btn-enable {
+    cursor: pointer;
+}

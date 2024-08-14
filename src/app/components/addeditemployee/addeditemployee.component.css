@@ -1,0 +1,75 @@
+.addEmp {
+    margin: 0px 74px;
+}
+
+.emp {
+    padding: 7px;
+    color: white;
+    background-color: rgb(27, 144, 144);
+    border: none;
+    border-radius: 10px;
+}
+
+.submitEmp {
+    text-align: center;
+}
+
+.btn-submit {
+    background-color: rgb(27, 144, 144);
+    border: none;
+    border-radius: 10px;
+    padding: 7px 10px;
+    color: white;
+    margin: 10px;
+}
+
+input select .ng-invalid .ng-touched {
+    border: 2px solid red;
+}
+
+small {
+    color: red;
+    font-weight: bold;
+}
+.btn-disable {
+    cursor: not-allowed;
+}
+
+.btn-enable {
+    cursor: pointer;
+}
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.gender  label{
+    padding: 5px;
+}
+.gender input{
+    margin: 0px 0px 0px 10px;
+}
+.modal-title{
+    font-size: 25px;
+    font-family: 'Times New Roman', Times, serif;
+    color:  rgb(27, 144, 144);
+    font-weight: 400;
+}
+table,th,td{
+    border: 1px solid black;
+}
+
+.technology{
+    width: 100%;
+}
+.category{
+    padding: 3px;
+}
+/* .p-multiselect .p-multiselect-trigger {
+    background: transparent;
+    color: #6c757d;
+    width: 11.357rem !important;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+} */

@@ -1,0 +1,35 @@
+<div class="modal-header">
+    <h4 class="modal-title">Current User</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-lg-6">
+            <p>Username:</p>
+        </div>
+        <div class="col-lg-6">
+            <p> {{ currentUser[0].username }}</p>
+        </div>
+        <div class="col-lg-6">
+            <p>Email: </p>
+        </div>
+        <div class="col-lg-6">
+            <p>{{ currentUser[0].email }}</p>
+        </div>
+        <div class="col-lg-6">
+            <p>Mobile Number: </p>
+        </div>
+        <div class="col-lg-6">
+            <p>{{ currentUser[0].mobileNumber }}</p>
+        </div>
+        <div class="col-lg-6">
+            <p>Gender : </p>
+        </div>
+        <div class="col-lg-6">
+            <p> {{ currentUser[0].gender }}</p>
+        </div>
+    </div>
+
+</div>
+
+<!-- { username: 'rani', email: 'ranireddy@gmail.com', mobileNumber: 9876543210, password: '123@Sf',gender:'female' }, -->

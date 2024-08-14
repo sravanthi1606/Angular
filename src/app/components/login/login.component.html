@@ -1,0 +1,54 @@
+
+<div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4">
+                <div class="form">
+                    <div>
+                        <img src={{imgUrl}} width="130px" height="130px">
+                    </div>
+                    <div>
+                        <form (ngSubmit)="onSubmitLogin()" [formGroup]="loginForm">
+
+                            <div class="username mb-3">
+                                <input type="text" class="form-control" id="exampleFormControlInput1" name="userName"
+                                    formControlName="username" placeholder="User Name">
+                            </div>
+                            <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched ">
+                                <small *ngIf="loginForm.get('username')?.errors?.['required']">UserName is a required
+                                    field</small>
+                                <small *ngIf="loginForm.get('username')?.errors?.['userNotFound']">UserName does not
+                                    exist</small>
+                            </div>
+                            <div class="password mb-3">
+                                <input type="password" class="form-control" id="exampleFormControlInput1"
+                                    name="password" formControlName="password" placeholder="Password">
+                            </div>
+                            <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched ">
+                                <small *ngIf="loginForm.get('password')?.errors?.['required']">Password is a required
+                                    field</small>
+                                <small *ngIf="loginForm.get('password')?.errors?.['passwordMismatch']">Password does not
+                                    match</small>
+                            </div><br>
+                            <div *ngIf="loginError" class="error-message">
+                                <p>{{ loginError }}</p>
+                            </div>
+                            <button class="login" [ngClass]="loginForm.valid ? 'btn-enable' : 'btn-disable'"
+                                type="submit" [disabled]='!loginForm.valid'>login</button>
+
+                            <div class="sign">
+                                <p>New User ? <a href="signUp">Sign Up</a></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4"></div>
+        </div>
+    </div>
+</div>
+
+
+
+

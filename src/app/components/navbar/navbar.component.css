@@ -1,0 +1,85 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    /* padding: 30px 10px; */
+  }
+  
+  .logo {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .loginicon {
+    font-size: 40px;
+    display: inline-block;
+    /* padding: 20px 0px; */
+    margin: 20px 0px 0px 0px;
+    color: rgb(32, 144, 184);
+  }
+  
+  #dropdownBasic1 {
+    border: none;
+    background-color: none;
+  }
+  
+  /* Override Bootstrap dropdown styles */
+  /* Ensure you target the correct element */
+  /* .ngb-dropdown-toggle {
+      position: relative;
+      padding-right: 0; 
+    }
+    
+   .ngb-dropdown-toggle ::after {
+      content: none !important;
+      display: none !important;
+      visibility: hidden !important;
+    } */
+  
+  
+  /* .dropdown {
+      position: relative;
+      display: inline-block;
+    } */
+  
+  .dropdown-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+  }
+  
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 80%;
+    right: 10px;
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+  
+  .dropdown-menu.show {
+    display: block;
+  }
+  
+  .dropdown-item {
+    padding: 5px;
+    text-align: center;
+    background: white;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .username {
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    color: red;
+    font-size: 20px;
+  }

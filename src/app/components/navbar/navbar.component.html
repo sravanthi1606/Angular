@@ -1,0 +1,13 @@
+<div class="dropdown">
+    <div class="header">
+        <a href="home"><img class="logo" src={{imgUrl}}></a>
+        <button class="dropdown-button" (click)="toggleDropdown()">
+            <i class="bi bi-person-circle loginicon"></i>
+        </button>
+    </div>
+    <div class="dropdown-menu" [ngClass]="{'show': isOpen}">
+        <button (click)="naviagteProfile()" class="dropdown-item">My Profile</button>
+        <!-- <p class="username">{{ currentUser[0].username.toUpperCase() }} {{currentUser[0].gender}}</p> -->
+        <button class="dropdown-item" (click)="handleLogout()">Logout</button>
+    </div>
+</div>

@@ -24,8 +24,6 @@ export class HomeComponent {
   showTable(x: any) {
     this.show = true;
     this.tech = x.technologies
-    console.log(this.tech,'this.tech');
-
     this.category = x.technologyName
     // this.router.navigate(['/home', x.technologyName]);
   }
@@ -43,7 +41,6 @@ export class HomeComponent {
 
   getTechnologies() {
     this.technologie = this.employeeService.getData().data
-    // console.log(this.technologie, 'techs');
   }
 
 }

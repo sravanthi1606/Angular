@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { NgbActiveModal, NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 interface Employee {
@@ -13,9 +14,11 @@ interface EmployeeData {
 	id: number;
 	employee: string;
 	mobileNumber: number;
-	projectName: string;
+	ProjectDetails : any[]
+
+	// projectName: string;
 	company: string;
-	projectDescription: string;
+	// projectDescription: string;
 	technology: string[];
 	experience: number;
 	noticePeriod: number;
@@ -25,16 +28,23 @@ interface EmployeeData {
 
 @Component({
 	selector: 'app-employee-details',
-	imports: [],
-  templateUrl: './employee-details.component.html',
-  styleUrls: ['./employee-details.component.css'],
-  standalone:true,
+	imports: [CommonModule],
+	templateUrl: './employee-details.component.html',
+	styleUrls: ['./employee-details.component.css'],
+	standalone: true,
 	providers: [NgbModalConfig, NgbModal],
 })
 export class EmployeeDetailsComponent {
 	@Input() employees!: EmployeeData;
 
 
-	constructor(public activeModal: NgbActiveModal) { }
+	constructor(public activeModal: NgbActiveModal) {
+
+	}
+	ngOnInit() {
+		console.log(this.employees, 'details emmployee');
+
+	}
+
 
 }

@@ -9,30 +9,30 @@ import { EmployeeDetailsComponent } from '../employee-details/employee-details.c
 @Component({
   selector: 'app-employee-table',
   standalone: true,
-  imports: [CommonModule,RouterLink,EmployeeDetailsComponent,AddeditemployeeComponent],
+  imports: [CommonModule, RouterLink, EmployeeDetailsComponent, AddeditemployeeComponent],
   templateUrl: './employee-table.component.html',
-  styleUrls:[ './employee-table.component.css']
+  styleUrls: ['./employee-table.component.css']
 })
 export class EmployeeTableComponent {
-  @Input() public shows:any
+  @Input() public shows: any
   @Output() back = new EventEmitter()
 
   @Input() public techs: string[] = [];
 
-  @Input() public postTechnology :any=[]
+  @Input() public postTechnology: any = []
 
-  @Input() public technologyName : string =''
+  @Input() public technologyName: string = ''
 
-  public employeedata:any=[]
+  public employeedata: any = []
 
-  public mergedData :any= [];
-  selectedEmployee : any
-
-
-  constructor(private empData: EmployeeServiceService, private modalService: NgbModal,private route : ActivatedRoute) {}
+  public mergedData: any = [];
+  selectedEmployee: any
 
 
-  onBack(){
+  constructor(private empData: EmployeeServiceService, private modalService: NgbModal, private route: ActivatedRoute) { }
+
+
+  onBack() {
     this.back.emit();
   }
 
@@ -40,49 +40,43 @@ export class EmployeeTableComponent {
 
   ngOnInit() {
     this.getEmployees();
-
-    console.log(this.technologyName,'this.technologyName');
-    console.log(this.techs,'this.technologies');
-    
-    
   }
 
   getEmployees() {
-    console.log("this.employees",this.empData.getSingleEmpData())
     const data = this.empData.getSingleEmpData();
     this.mergedData = data.data.filter((userObj: any) =>
       userObj.technology.find((item: any) => this.techs.includes(item)))
-    
+
   }
-    openAddEmpModal() {
-    const modalRef = this.modalService.open(AddeditemployeeComponent,{ size: 'lg', scrollable: false });
+  openAddEmpModal() {
+    const modalRef = this.modalService.open(AddeditemployeeComponent, { size: 'lg', scrollable: false });
     modalRef.componentInstance.technologies = this.techs
     modalRef.componentInstance.technologName = this.technologyName
     modalRef.componentInstance.employeeAdded.subscribe(() => {
       this.getEmployees();
     });
   }
-  employeeAdded(event:any){
+  employeeAdded(event: any) {
     this.getEmployees()
   }
 
 
   openEditEmpModal(employee: any) {
-    console.log(employee,'nnkmk');
-    
-    const modalRef = this.modalService.open(AddeditemployeeComponent,{ size: 'lg', scrollable: false });
+    const modalRef = this.modalService.open(AddeditemployeeComponent, { size: 'lg', scrollable: false });
     modalRef.componentInstance.employee = employee;
-    modalRef.componentInstance.employeeAdded.subscribe(() => this.getEmployees()); 
+    modalRef.componentInstance.employeeAdded.subscribe(() => this.getEmployees());
   }
 
 
-  openModal(employee : any){
+  openModal(employee: any) {
     const modalRef = this.modalService.open(EmployeeDetailsComponent);
     modalRef.componentInstance.employees = employee;
+    console.log(employee.ProjectDetails,'table employee');
+    
   }
 
 
-  onDelete(id : number){
+  onDelete(id: number) {
     this.empData.deleteEmployee(id)
     this.getEmployees();
   }

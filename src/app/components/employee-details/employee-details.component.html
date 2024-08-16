@@ -1,26 +1,74 @@
 <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Employee Details</h4>
-    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
-  </div>
-  <div class="modal-body">
-    <div class="row">
-      <div class="col-lg-6"><p><strong>Employee:</strong></p></div>
-      <div class="col-lg-6">{{ employees.employee }}</div>
-      <div class="col-lg-6"><p><strong>Mobile Number:</strong></p></div>
-      <div class="col-lg-6">{{ employees.mobileNumber }}</div>
-      <div class="col-lg-6"><p><strong>Technology:</strong></p></div>
-      <div class="col-lg-6">{{ employees.technology }}</div>
-      <div class="col-lg-6"><p><strong>Company:</strong></p></div>
-      <div class="col-lg-6">{{ employees.company }}</div>
-      <div class="col-lg-6"><p><strong>Project:</strong></p></div>
-      <div class="col-lg-6">{{ employees.projectName }}</div>
-      <div class="col-lg-6"><p><strong>Project Description:</strong></p></div>
-      <div class="col-lg-6">{{ employees.projectDescription }}</div>
-      <div class="col-lg-6"><p><strong>Experience:</strong></p></div>
-      <div class="col-lg-6">{{ employees.experience }}</div>
-      <div class="col-lg-6"><p><strong>Notice Period:</strong></p></div>
-      <div class="col-lg-6">{{ employees.noticePeriod }}</div>
+  <h4 class="modal-title" id="modal-basic-title">Employee Details</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-lg-6">
+      <p><strong>Employee:</strong></p>
     </div>
-  
-  
+    <div class="col-lg-6">{{ employees.employee }}</div>
+    <div class="col-lg-6">
+      <p><strong>Mobile Number:</strong></p>
+    </div>
+    <div class="col-lg-6">{{ employees.mobileNumber }}</div>
+    <div class="col-lg-6">
+      <p><strong>Technology:</strong></p>
+    </div>
+    <div class="col-lg-6">{{ employees.technology }}</div>
+    <div class="col-lg-6">
+      <p><strong>Company:</strong></p>
+    </div>
+    <div class="col-lg-6">{{ employees.company }}</div>
+
+    <div class="col-lg-6">
+      <p><strong>Experience:</strong></p>
+    </div>
+    <div class="col-lg-6">{{ employees.experience }}</div>
+    <div class="col-lg-6">
+      <p><strong>Notice Period:</strong></p>
+    </div>
+    <div class="col-lg-6">{{ employees.noticePeriod }}</div>
   </div>
+
+  <!-- <div class="col-lg-6"><p><strong>Project:</strong></p></div>
+      <div class="col-lg-6">{{ employees.ProjectDetails[0].title      }}</div>
+      <div class="col-lg-6"><p><strong>Project Description:</strong></p></div>
+      <div class="col-lg-6">{{ employees.ProjectDetails[0].description }}</div> -->
+
+  <div class="row">
+    <div class="col-lg-12 ">
+      <div>
+        <p><strong>Project Details:</strong></p>
+      </div>
+      <table>
+        <thead>
+          <th>Title</th>
+          <th>Description</th>
+        </thead>
+        <tbody>
+          <ng-container *ngIf="employees?.ProjectDetails?.length ">
+            <tr *ngFor="let project of employees.ProjectDetails">
+              <td>{{ project.title }}</td>
+              <td>{{ project.description }}</td>
+            </tr>
+          </ng-container>
+
+        </tbody>
+      </table>
+      <!-- <div class="row">
+          <div class="col-lg-6">
+            <p><strong>Project Name:</strong></p>
+          </div>
+          <div class="col-lg-6">{{ project.title }}</div>
+
+          <div class="col-lg-6">
+            <p><strong>Project Description:</strong></p>
+          </div>
+          <div class="col-lg-6">{{ project.description }}</div>
+        </div> -->
+    </div>
+  </div>
+
+
+</div>

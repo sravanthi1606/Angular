@@ -31,7 +31,7 @@ interface City {
   templateUrl: './addeditemployee.component.html',
   styleUrls: ['./addeditemployee.component.css'],
   standalone: true,
-  imports: [FormsModule, NgbDatepickerModule, ReactiveFormsModule, CommonModule, MultiSelectModule, DropdownModule, TableModule,RadioButtonModule],
+  imports: [FormsModule, NgbDatepickerModule, ReactiveFormsModule, CommonModule, MultiSelectModule, DropdownModule, TableModule, RadioButtonModule],
   providers: [NgbModalConfig, NgbModal],
 
 })
@@ -39,25 +39,16 @@ interface City {
 
 export class AddeditemployeeComponent {
 
-
   constructor(public activeModal: NgbActiveModal, private empDetails: EmployeeServiceService) { }
   @Output() employeeAdded = new EventEmitter<any>();
   @Input() employee: any;
-
   @Input() technologName: string = ''
-
-
   @Input() technologies: string[] = [];
   techName: { name: string }[] = [];
   selectedtech: { name: string }[] = [];
-
   cities: City[] | undefined;
-  // formGroup!: FormGroup ;
-
   addEditForm!: FormGroup
-
   projectDetails: any = []
-
   project: any = {
     title: '',
     description: ''
@@ -67,9 +58,6 @@ export class AddeditemployeeComponent {
   editProjectId: number | null = null;
 
   OnAddEditSubmit() {
-    console.log('submit', this.addEditForm.value);
-    console.log(this.employee, 'employeee');
-    
 
     if (this.employee) {
       const editedEmp = {
@@ -87,8 +75,6 @@ export class AddeditemployeeComponent {
       }
       const updateEmp = { ...this.employee, ...editedEmp }
       this.empDetails.EditUpdateEmployee(updateEmp)
-      console.log(updateEmp, 'updateEmp');
-      console.log(this.employee, 'hjfdsf')
     }
     else {
       const newEmployee: any = {
@@ -97,16 +83,14 @@ export class AddeditemployeeComponent {
         mobileNumber: Number(this.addEditForm.value.mobileNumber),
         gender: this.addEditForm.value.gender,
         company: this.addEditForm.value.company,
-        ProjectDetails : this.projectDetails,
-         category: this.addEditForm.value.category,
+        ProjectDetails: this.projectDetails,
+        category: this.addEditForm.value.category,
         technology: this.addEditForm.value.technology.map((tech: any) => tech.name),
         experience: Number(this.addEditForm.value.experience),
         noticePeriod: Number(this.addEditForm.value.noticePeriod),
         verified: this.addEditForm.value.verified,
       }
-      console.log('submit', this.addEditForm.value);
 
-      console.log(newEmployee, 'newEmployee');
       this.empDetails.addEmployee(newEmployee)
 
     }
@@ -147,51 +131,38 @@ export class AddeditemployeeComponent {
   //   }
 
   // }
-  
+
 
 
   selectedCity: City | undefined;
 
-  // formGroup!: FormGroup;
 
   genderCategory: any[] = [
-      { name: 'female', key: 'F' },
-      { name: 'male', key: 'M' },
+    { name: 'female', key: 'F' },
+    { name: 'male', key: 'M' },
   ];
 
   ngOnInit() {
-
-
-
     this.addEditForm = new FormGroup({
       employee: new FormControl(this.employee ? this.employee.employee : null, [Validators.required, Validators.maxLength(10), Validators.minLength(4), Validators.pattern("^[a-zA-Z]+$")]),
       mobileNumber: new FormControl(this.employee ? this.employee.mobileNumber : null, [Validators.required, Validators.pattern("[0-9]{10}")]),
-      gender: new FormControl(this.employee ? this.employee.gender : null,Validators.required),
+      gender: new FormControl(this.employee ? this.employee.gender : null, Validators.required),
       company: new FormControl(this.employee ? this.employee.company : null, Validators.required),
       projectName: new FormControl(this.employee ? this.employee.ProjectDetails.projectName : null,),
       projectDescription: new FormControl(this.employee ? this.employee.ProjectDetails.projectDescription : null,),
-      category: new FormControl(this.employee ? this.employee.category : this.technologName,Validators.required),
-      technology: new FormControl(this.employee ? this.employee.technology.map((tech: any) => ({ name: tech })) : [],Validators.required),
+      category: new FormControl(this.employee ? this.employee.category : this.technologName, Validators.required),
+      technology: new FormControl(this.employee ? this.employee.technology.map((tech: any) => ({ name: tech })) : [], Validators.required),
       experience: new FormControl(this.employee ? this.employee.experience : null, [Validators.required]),
       noticePeriod: new FormControl(this.employee ? this.employee.noticePeriod : null, Validators.required),
       verified: new FormControl(this.employee ? this.employee.verified : 'No'),
     });
 
-    
 
-    console.log(this.technologies, 'this.technologies in modal');
-    console.log(this.technologName, 'this.technologName in modal');
 
     this.techName = this.technologies.map(tech => ({ name: tech }));
-    console.log(this.techName, 'this.cities initialized');
 
     if (this.employee) {
-      console.log(this.employee.ProjectDetails,'this.employee');
-      
-      
       this.projectDetails = this.employee.ProjectDetails;
-            console.log( this.projectDetails,' this.projectDetails   175');
-
       this.techName = this.technologies.map(tech => ({ name: tech }));
       this.selectedtech = this.techName.filter(tech => this.employee.technology.includes(tech.name));
       this.addEditForm.get('technology')?.setValue(this.selectedtech);
@@ -201,25 +172,22 @@ export class AddeditemployeeComponent {
 
 
 
-
-
   addProject() {
     if (this.editMode) {
-      console.log( this.editProjectId ,' this.editProjectId ');
 
-      const index = this.projectDetails.findIndex((project : any) => project.id === this.editProjectId);
+      const index = this.projectDetails.findIndex((project: any) => project.id === this.editProjectId);
       if (index !== -1) {
         this.projectDetails[index] = { id: this.editProjectId, ...this.project };
       }
       console.log(this.projectDetails);
-      
+
       this.editMode = false;
       this.editProjectId = null;
     } else {
       this.projectDetails.push({
         id: this.projectDetails.length + 1,
         ...this.project,
-        
+
       });
     }
 
@@ -227,23 +195,15 @@ export class AddeditemployeeComponent {
   }
 
 
-
   deleteProject(id: number) {
-    console.log(id, 'id');
     this.projectDetails = this.projectDetails.filter((project: any) => project.id !== id)
     console.log(this.projectDetails, 'data');
   }
 
   editProject(details: any) {
-
-    console.log(details, 'details');
     this.editMode = true
-
     this.editProjectId = details.id;
-    console.log( this.editProjectId ,' this.editProjectId ');
-    
     this.project = { title: details.title, description: details.description };
   }
-
 
 }

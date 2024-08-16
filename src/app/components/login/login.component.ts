@@ -34,22 +34,15 @@ export class LoginComponent {
 
 
   onSubmitLogin() {
-    console.log(this.loginForm, 'submit');
-    console.log(this.loginForm.value.username, 'userName');
-    console.log(this.loginForm.value.password, 'password');
   
     const foundUser = this.credentialData.find((cre : any) => cre.username === this.loginForm.value.username);
-    console.log(foundUser,'foundUser');
     
-    
-  
     if (!foundUser) {
       this.loginForm.get('username')?.setErrors({ userNotFound: true });
     } else if (foundUser.password  !== this.loginForm.value.password) {
       this.loginForm.get('password')?.setErrors({ passwordMismatch: true });
     }
     else {
-      console.log(foundUser, 'foundUser');
       this.loginForm.reset();
       this.credentials.initalempData();
       this.router.navigate(['/home'])
@@ -69,7 +62,6 @@ export class LoginComponent {
 
   getLoginCredentials() {
     this.credentialData = this.credentials.getCredentials().data;
-    console.log(this.credentialData, 'this.credentialData');
   }
 }
 

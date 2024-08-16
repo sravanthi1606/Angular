@@ -23,7 +23,6 @@ export class NavbarComponent {
 
   ngOnInit() {
     this.currentUser = this.employeeService.getCurrentUser().data
-    console.log('Current user:', this.currentUser);
   }
   
 

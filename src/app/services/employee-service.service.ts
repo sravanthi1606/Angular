@@ -8,8 +8,8 @@ interface Technology {
   technologies: string[];
 }
 interface ProjectDetail {
-  projectName: string;
-  projectDescription: string;
+  title: string;
+  description: string;
 }
 
 interface Employee {
@@ -102,7 +102,7 @@ export class EmployeeServiceService {
           gender:'female',
           company: 'abc',
           ProjectDetails :[
-            { projectName: 'xyz',projectDescription: 'guqhrjh',}
+            { title: 'xyz',description: 'guqhrjh',}
           ],
          
           technology: ['Angular'],
@@ -117,7 +117,7 @@ export class EmployeeServiceService {
           gender:'female',
           company: 'abc',
           ProjectDetails :[
-            { projectName: 'xys',projectDescription: 'adada',}
+            { title: 'xys',description: 'adada',}
           ],
           technology: ['React'],
           experience: 2,
@@ -131,7 +131,7 @@ export class EmployeeServiceService {
           gender:'female',
           company: 'abc',
           ProjectDetails :[
-            { projectName: 'Ayz',projectDescription: 'vcbb',}
+            { title: 'Ayz',description: 'vcbb',}
           ],
           technology: ['Java'],
           experience: 2,

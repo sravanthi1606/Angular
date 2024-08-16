@@ -31,8 +31,8 @@ export class SignUPComponent {
   signUpFormvalues = {
     password : '',
     confirmPassword : ''
-
   }
+  
   passwordMismatch:boolean = false;
   public credentialData = [];
   // @Input() confirmPasswordInput : string;
@@ -44,7 +44,6 @@ export class SignUPComponent {
   onSubmitSignUP() {
     
     if (this.signUpForm.valid && this.isPasswordMatching) {
-      console.log(this.signUpForm.value, 'signUp values');
       const newUser : any= {
         username: this.signUpForm.value.username,
         email:this.signUpForm.value.email,
@@ -52,7 +51,6 @@ export class SignUPComponent {
         password: this.signUpForm.value.password,
         gender:this.signUpForm.value.gender
       };
-      console.log(newUser);
       this.credentials.addCredentials(newUser)
        this.signUpForm.reset();
 
@@ -105,20 +103,15 @@ export class SignUPComponent {
       confirmPassword: new FormControl(null, [Validators.required]),
     },
     );
- 
-    console.log(this.signUpForm);
- 
   }
   
 
   getLoginCredentials() {
     this.credentialData = this.credentials.getCredentials().data;
-    console.log(this.credentialData, 'this.credentialData');
 
   }
   isPasswordMatching:boolean = true
   passwordMatch(signUpForm:any){
-    console.log("signupform",signUpForm)
     if(signUpForm.password == signUpForm.confirmPassword){
       this.isPasswordMatching = true
     }else {
@@ -129,7 +122,6 @@ export class SignUPComponent {
   navigateLogin(){
     this.router.navigate(['login'])
   }
-
 
 
 }

@@ -65,13 +65,13 @@ export class AddeditemployeeComponent {
         employee: this.addEditForm.value.employee,
         mobileNumber: Number(this.addEditForm.value.mobileNumber),
         company: this.addEditForm.value.company,
-        projectName: this.addEditForm.value.projectName,
-        projectDescription: this.addEditForm.value.projectDescription,
+        // projectName: this.addEditForm.value.projectName,
+        // projectDescription: this.addEditForm.value.projectDescription,
         category: this.addEditForm.value.category,
         technology: this.addEditForm.value.technology.map((tech: any) => tech.name),
         experience: Number(this.addEditForm.value.experience),
         noticePeriod: Number(this.addEditForm.value.noticePeriod),
-        verified: 'No',
+        verified: this.addEditForm.value.verified,
       }
       console.log(editedEmp,'editedEmp');
       
@@ -158,7 +158,7 @@ export class AddeditemployeeComponent {
       // technology: new FormControl(this.employee ? this.employee.technology.map((tech: any) => ({ name: tech })) : [], Validators.required),
       experience: new FormControl(this.employee ? this.employee.experience : null, [Validators.required]),
       noticePeriod: new FormControl(this.employee ? this.employee.noticePeriod : null, Validators.required),
-      verified: new FormControl(this.employee ? this.employee.verified : 'No'),
+      verified: new FormControl(this.employee ? 'No' : 'No'),
     });
 
 
@@ -169,6 +169,8 @@ export class AddeditemployeeComponent {
 
     if (this.employee) {
       this.projectDetails = this.employee.ProjectDetails;
+      // console.log(this.employee.technology,'this.employee.technology');
+      
       // this.techName = this.technologies.map(tech => ({ name: tech }));
       // // this.selectedtech = this.techName.filter(tech => this.employee.technology.includes(tech.name));
       // // this.addEditForm.get('technology')?.setValue(this.selectedtech);

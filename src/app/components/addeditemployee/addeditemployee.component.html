@@ -26,7 +26,7 @@
                                     have max of 10 characters
                                 </small>
                                 <small *ngIf="addEditForm.get('employee')?.errors?.['minLength']">Employee Name should
-                                    have  min of 4 characters
+                                    have min of 4 characters
                                 </small>
                             </div>
                         </div>
@@ -76,7 +76,8 @@
                             </div>
 
                             <div *ngIf="addEditForm.get('company')?.invalid && addEditForm.get('company')?.touched ">
-                                <small *ngIf="addEditForm.get('company')?.errors?.['required']">Company is a required field</small>
+                                <small *ngIf="addEditForm.get('company')?.errors?.['required']">Company is a required
+                                    field</small>
                             </div>
                         </div>
 
@@ -134,7 +135,8 @@
                                 <div *ngIf="projectDetails.length === 0">
                                     <div
                                         *ngIf="addEditForm.get('projectDescription')?.invalid && addEditForm.get('projectDescription')?.touched ">
-                                        <small *ngIf="addEditForm.get('projectDescription')?.errors?.['required']">Project
+                                        <small
+                                            *ngIf="addEditForm.get('projectDescription')?.errors?.['required']">Project
                                             Description is a required field
                                         </small>
                                     </div>
@@ -224,17 +226,29 @@
                             </div>
                         </div>
 
-                        <div *ngIf="addEditForm.get('verified')?.invalid && addEditForm.get('verified')?.touched ">
-                            <small *ngIf="addEditForm.get('verified')?.errors?.['verified']">Verified is a required  field</small>
+                        <div class="col-lg-6">
+                            <div *ngIf="employee">
+                                <div>
+                                    <label>Verified</label>
+                                    <select formControlName="verified" class="form-select">
+                                        <option value="No">NO</option>
+                                        <option value="Yes">Yes</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div *ngIf="addEditForm.get('verified')?.invalid && addEditForm.get('verified')?.touched ">
+                                <small *ngIf="addEditForm.get('verified')?.errors?.['verified']">Verified is a required field</small>
+                            </div>
                         </div>
+
                     </div>
                 </div>
                 <div class="col-lg-12 submitEmp">
                     <button type="submit" value="submit" class="btn-submit"
                         [ngClass]="projectDetails.length > 0 ? 'btn-enable' : 'btn-disable'"
-                        (click)="activeModal.dismiss('Cross click')"
-                        [disabled]="projectDetails.length == 0">
-                        {{ employee ? 'Update' : 'Add' }}   {{projectDetails.length}}</button>
+                        (click)="activeModal.dismiss('Cross click')" [disabled]="projectDetails.length == 0">
+                        {{ employee ? 'Update' : 'Add' }} {{projectDetails.length}}</button>
 
 
                     <button type="button" class="btn-submit"

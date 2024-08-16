@@ -73,6 +73,8 @@ export class AddeditemployeeComponent {
         noticePeriod: Number(this.addEditForm.value.noticePeriod),
         verified: 'No',
       }
+      console.log(editedEmp,'editedEmp');
+      
       const updateEmp = { ...this.employee, ...editedEmp }
       this.empDetails.EditUpdateEmployee(updateEmp)
     }
@@ -143,30 +145,41 @@ export class AddeditemployeeComponent {
   ];
 
   ngOnInit() {
+
     this.addEditForm = new FormGroup({
       employee: new FormControl(this.employee ? this.employee.employee : null, [Validators.required, Validators.maxLength(10), Validators.minLength(4), Validators.pattern("^[a-zA-Z]+$")]),
       mobileNumber: new FormControl(this.employee ? this.employee.mobileNumber : null, [Validators.required, Validators.pattern("[0-9]{10}")]),
       gender: new FormControl(this.employee ? this.employee.gender : null, Validators.required),
       company: new FormControl(this.employee ? this.employee.company : null, Validators.required),
-      projectName: new FormControl(this.employee ? this.employee.ProjectDetails.projectName : null,),
-      projectDescription: new FormControl(this.employee ? this.employee.ProjectDetails.projectDescription : null,),
+      projectName: new FormControl(this.employee ? this.employee.ProjectDetails.projectName : null, Validators.required),
+      projectDescription: new FormControl(this.employee ? this.employee.ProjectDetails.projectDescription : null, Validators.required),
       category: new FormControl(this.employee ? this.employee.category : this.technologName, Validators.required),
-      technology: new FormControl(this.employee ? this.employee.technology.map((tech: any) => ({ name: tech })) : [], Validators.required),
+      technology: new FormControl(this.employee ? []: [], Validators.required),
+      // technology: new FormControl(this.employee ? this.employee.technology.map((tech: any) => ({ name: tech })) : [], Validators.required),
       experience: new FormControl(this.employee ? this.employee.experience : null, [Validators.required]),
       noticePeriod: new FormControl(this.employee ? this.employee.noticePeriod : null, Validators.required),
       verified: new FormControl(this.employee ? this.employee.verified : 'No'),
     });
 
 
+    console.log(this.addEditForm.invalid ,'invalid');
+
 
     this.techName = this.technologies.map(tech => ({ name: tech }));
 
     if (this.employee) {
       this.projectDetails = this.employee.ProjectDetails;
-      this.techName = this.technologies.map(tech => ({ name: tech }));
-      this.selectedtech = this.techName.filter(tech => this.employee.technology.includes(tech.name));
-      this.addEditForm.get('technology')?.setValue(this.selectedtech);
+      // this.techName = this.technologies.map(tech => ({ name: tech }));
+      // // this.selectedtech = this.techName.filter(tech => this.employee.technology.includes(tech.name));
+      // // this.addEditForm.get('technology')?.setValue(this.selectedtech);
+
+      // this.selectedtech = this.employee.technologies; // Assuming technologies is an array of selected technology objects
+      // this.addEditForm.patchValue({
+      //   technology: this.selectedtech
+      // });
     }
+
+    
 
   }
 
@@ -183,16 +196,31 @@ export class AddeditemployeeComponent {
 
       this.editMode = false;
       this.editProjectId = null;
-    } else {
+    }
+    else {
       this.projectDetails.push({
         id: this.projectDetails.length + 1,
         ...this.project,
 
       });
+      console.log(this.projectDetails, 'projetDetails length');
+      console.log(this.addEditForm.invalid ,'invalid');
+      
+
+
     }
 
     this.project = { title: '', description: '' };
+    this.addEditForm.get('projectName')?.reset();
+    this.addEditForm.get('projectDescription')?.reset();
+    // this.addEditForm.get('projectName')?.invalid
+
+    
+
+   
   }
+
+
 
 
   deleteProject(id: number) {

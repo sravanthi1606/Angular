@@ -20,14 +20,14 @@
 
                             <div *ngIf="addEditForm.get('employee')?.invalid && addEditForm.get('employee')?.touched ">
                                 <small *ngIf="addEditForm.get('employee')?.errors?.['required']">Employee Name is a
-                                    required
-                                    field</small>
+                                    required field
+                                </small>
                                 <small *ngIf="addEditForm.get('employee')?.errors?.['maxLength']">Employee Name should
-                                    have
-                                    max of 10 characters</small>
+                                    have max of 10 characters
+                                </small>
                                 <small *ngIf="addEditForm.get('employee')?.errors?.['minLength']">Employee Name should
-                                    have
-                                    min of 4 characters</small>
+                                    have  min of 4 characters
+                                </small>
                             </div>
                         </div>
 
@@ -41,9 +41,11 @@
                             <div
                                 *ngIf="addEditForm.get('mobileNumber')?.invalid && addEditForm.get('mobileNumber')?.touched ">
                                 <small *ngIf="addEditForm.get('mobileNumber')?.errors?.['required']">Mobile Number is a
-                                    required field</small>
+                                    required field
+                                </small>
                                 <small *ngIf="addEditForm.get('mobileNumber')?.errors?.['pattern']">Mobile Number must
-                                    contain 10 digits</small>
+                                    contain 10 digits
+                                </small>
                             </div>
                         </div>
 
@@ -74,8 +76,7 @@
                             </div>
 
                             <div *ngIf="addEditForm.get('company')?.invalid && addEditForm.get('company')?.touched ">
-                                <small *ngIf="addEditForm.get('company')?.errors?.['required']">Company is a required
-                                    field</small>
+                                <small *ngIf="addEditForm.get('company')?.errors?.['required']">Company is a required field</small>
                             </div>
                         </div>
 
@@ -89,16 +90,19 @@
                             <div class="mb-3">
                                 <label>Technologies :</label><br>
                                 <p-multiSelect [options]="techName" [(ngModel)]="selectedtech" optionLabel="name"
-                                    placeholder="Select Technology" formControlName="technology"
-                                    class="technology"></p-multiSelect>
+                                    placeholder="Select Technology" formControlName="technology" class="technology">
+                                </p-multiSelect>
                             </div>
 
-                            <div
-                                *ngIf="addEditForm.get('technology')?.invalid && addEditForm.get('technology')?.touched ">
-                                <small *ngIf="addEditForm.get('technology')?.errors?.['required']">Technology is a
-                                    required
-                                    field</small>
+                            <div>
+                                <div
+                                    *ngIf="addEditForm.get('technology')?.invalid && addEditForm.get('technology')?.touched ">
+                                    <small *ngIf="addEditForm.get('technology')?.errors?.['required']">Technology is a
+                                        required field
+                                    </small>
+                                </div>
                             </div>
+
 
                         </div>
 
@@ -111,12 +115,13 @@
                                     <input type="text" class="form-control" name="projectName"
                                         formControlName="projectName" placeholder="title" [(ngModel)]="project.title">
                                 </div>
-
-                                <div
-                                    *ngIf="addEditForm.get('projectName')?.invalid && addEditForm.get('projectName')?.touched ">
-                                    <small *ngIf="addEditForm.get('projectName')?.errors?.['required']">Project Name is
-                                        a
-                                        required field</small>
+                                <div *ngIf="projectDetails.length === 0">
+                                    <div
+                                        *ngIf="addEditForm.get('projectName')?.invalid && addEditForm.get('projectName')?.touched ">
+                                        <small *ngIf="addEditForm.get('projectName')?.errors?.['required']">Project Name
+                                            is a required field
+                                        </small>
+                                    </div>
                                 </div>
                             </div>
 
@@ -126,22 +131,24 @@
                                         formControlName="projectDescription" placeholder="Description"
                                         [(ngModel)]="project.description"></textarea>
                                 </div>
-
-                                <div
-                                    *ngIf="addEditForm.get('projectDescription')?.invalid && addEditForm.get('projectDescription')?.touched ">
-                                    <small *ngIf="addEditForm.get('projectDescription')?.errors?.['required']">Project
-                                        Description is a required
-                                        field</small>
+                                <div *ngIf="projectDetails.length === 0">
+                                    <div
+                                        *ngIf="addEditForm.get('projectDescription')?.invalid && addEditForm.get('projectDescription')?.touched ">
+                                        <small *ngIf="addEditForm.get('projectDescription')?.errors?.['required']">Project
+                                            Description is a required field
+                                        </small>
+                                    </div>
                                 </div>
-
                             </div>
 
                             <!-- <div *ngIf="projectDetails.length === 0 ">
-                            <small class="text-danger">At least one project must be added.</small>
-                        </div>  -->
+                                <small class="text-danger">At least one project must be added.</small>
+                            </div>  -->
 
                             <div class="col-lg-12" style="text-align: center;">
-                                <button type="button" (click)="addProject()" class="btn-submit">
+                                <button type="button" (click)="addProject()" class="btn-submit"
+                                    [disabled]="!addEditForm.get('projectName')?.valid || !addEditForm.get('projectDescription')?.valid"
+                                    [ngClass]="addEditForm.get('projectName')?.valid && addEditForm.get('projectDescription')?.valid ? 'btn-enable' : 'btn-disable'">
                                     {{ editMode ? 'Update' : 'Add' }} Project
                                 </button>
                                 <button class="btn-submit" type="reset">cancel</button>
@@ -162,11 +169,13 @@
                                         <td>{{details.description}}</td>
                                         <td>
                                             <button class="btn btn-warning m-2" type="button"
-                                                (click)="editProject(details)"><i
-                                                    class="bi bi-pencil-square"></i></button>
+                                                (click)="editProject(details)">
+                                                <i class="bi bi-pencil-square"></i>
+                                            </button>
                                             <button class="btn btn-danger m-2" type="button"
-                                                (click)="deleteProject(details.id)"><i
-                                                    class="bi bi-trash3-fill"></i></button>
+                                                (click)="deleteProject(details.id)">
+                                                <i class="bi bi-trash3-fill"></i>
+                                            </button>
                                         </td>
                                     </tr>
                                 </ng-template>
@@ -190,8 +199,7 @@
                             <div
                                 *ngIf="addEditForm.get('experience')?.invalid && addEditForm.get('experience')?.touched ">
                                 <small *ngIf="addEditForm.get('experience')?.errors?.['required']">Experience is a
-                                    required
-                                    field</small>
+                                    required field</small>
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -211,30 +219,24 @@
                             <div
                                 *ngIf="addEditForm.get('noticePeriod')?.invalid && addEditForm.get('noticePeriod')?.touched ">
                                 <small *ngIf="addEditForm.get('noticePeriod')?.errors?.['required']">Notice Period is a
-                                    required
-                                    field</small>
+                                    required field
+                                </small>
                             </div>
                         </div>
 
                         <div *ngIf="addEditForm.get('verified')?.invalid && addEditForm.get('verified')?.touched ">
-                            <small *ngIf="addEditForm.get('verified')?.errors?.['verified']">Verified is a required
-                                field</small>
+                            <small *ngIf="addEditForm.get('verified')?.errors?.['verified']">Verified is a required  field</small>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-12 submitEmp">
                     <button type="submit" value="submit" class="btn-submit"
-                        [ngClass]="addEditForm.valid ? 'btn-enable' : 'btn-disable'"
-                        (click)="activeModal.dismiss('Cross click')" [disabled]="!addEditForm.valid">
-                        {{ employee ? 'Update' : 'Add' }}</button>
+                        [ngClass]="projectDetails.length > 0 ? 'btn-enable' : 'btn-disable'"
+                        (click)="activeModal.dismiss('Cross click')"
+                        [disabled]="projectDetails.length == 0">
+                        {{ employee ? 'Update' : 'Add' }}   {{projectDetails.length}}</button>
 
-                    <!-- <button type="submit" value="submit" class="btn-submit"
-                        [ngClass]="addEditForm.valid ? 'btn-enable' : 'btn-disable'" *ngIf='employee'
-                        (click)="activeModal.dismiss('Cross click')" [disabled]="!addEditForm.valid">
-                        Update</button>
-                    <button type="submit" value="submit" class="btn-submit"
-                        [ngClass]="addEditForm.valid ? 'btn-enable' : 'btn-disable'" *ngIf='!employee'
-                        (click)="activeModal.dismiss('Cross click')" [disabled]="!addEditForm.valid">Submit</button> -->
+
                     <button type="button" class="btn-submit"
                         (click)="activeModal.dismiss('Cross click')">Cancel</button>
                 </div>
@@ -298,3 +300,13 @@
                             </select>
                         </div>
                     </div> -->
+
+
+
+<!-- <button type="submit" value="submit" class="btn-submit"
+                        [ngClass]="addEditForm.valid ? 'btn-enable' : 'btn-disable'" *ngIf='employee'
+                        (click)="activeModal.dismiss('Cross click')" [disabled]="!addEditForm.valid">
+                        Update</button>
+                    <button type="submit" value="submit" class="btn-submit"
+                        [ngClass]="addEditForm.valid ? 'btn-enable' : 'btn-disable'" *ngIf='!employee'
+                        (click)="activeModal.dismiss('Cross click')" [disabled]="!addEditForm.valid">Submit</button> -->

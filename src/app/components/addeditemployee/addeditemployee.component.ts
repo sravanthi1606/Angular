@@ -169,7 +169,8 @@ export class AddeditemployeeComponent {
 
     if (this.employee) {
       this.projectDetails = this.employee.ProjectDetails;
-      // console.log(this.employee.technology,'this.employee.technology');
+      this.techName = this.employee.technology.map((tech: any) => ({ name: tech }))
+      console.log(this.employee.technology,'this.employee.technology');
       
       // this.techName = this.technologies.map(tech => ({ name: tech }));
       // // this.selectedtech = this.techName.filter(tech => this.employee.technology.includes(tech.name));

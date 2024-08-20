@@ -65,6 +65,8 @@ export class EmployeeTableComponent {
     const modalRef = this.modalService.open(AddeditemployeeComponent, { size: 'lg', scrollable: false });
     modalRef.componentInstance.employee = employee;
     modalRef.componentInstance.employeeAdded.subscribe(() => this.getEmployees());
+    console.log(employee,'selected');
+
   }
 
 

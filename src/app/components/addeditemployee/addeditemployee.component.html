@@ -143,18 +143,19 @@
                                 </div>
                             </div>
 
-                            <!-- <div *ngIf="projectDetails.length === 0 ">
-                                <small class="text-danger">At least one project must be added.</small>
-                            </div>  -->
 
                             <div class="col-lg-12" style="text-align: center;">
                                 <button type="button" (click)="addProject()" class="btn-submit"
-                                    [disabled]="!addEditForm.get('projectName')?.valid || !addEditForm.get('projectDescription')?.valid"
-                                    [ngClass]="addEditForm.get('projectName')?.valid && addEditForm.get('projectDescription')?.valid ? 'btn-enable' : 'btn-disable'">
+                                [disabled] = "!project.description  || !project.title "
+                                [ngClass]="project.description  && project.title ? 'btn-enable' : 'btn-disable'" >
                                     {{ editMode ? 'Update' : 'Add' }} Project
                                 </button>
                                 <button class="btn-submit" type="reset">cancel</button>
                             </div>
+
+                            <!-- [disabled]="!addEditForm.get('projectName')?.valid || !addEditForm.get('projectDescription')?.valid" -->
+                            <!-- [ngClass]="addEditForm.get('projectName')?.valid && addEditForm.get('projectDescription')?.valid ? 'btn-enable' : 'btn-disable'" -->
+
 
                             <p-table [value]="projectDetails" styleClass="p-datatable-striped"
                                 [tableStyle]="{'min-width': '10rem'}">
@@ -231,14 +232,15 @@
                                 <div>
                                     <label>Verified</label>
                                     <select formControlName="verified" class="form-select">
-                                        <option value="No">NO</option>
+                                        <option value="No">No</option>
                                         <option value="Yes">Yes</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div *ngIf="addEditForm.get('verified')?.invalid && addEditForm.get('verified')?.touched ">
-                                <small *ngIf="addEditForm.get('verified')?.errors?.['verified']">Verified is a required field</small>
+                                <small *ngIf="addEditForm.get('verified')?.errors?.['verified']">Verified is a required
+                                    field</small>
                             </div>
                         </div>
 
@@ -246,10 +248,10 @@
                 </div>
                 <div class="col-lg-12 submitEmp">
                     <button type="submit" value="submit" class="btn-submit"
-                        [ngClass]="projectDetails.length > 0 ? 'btn-enable' : 'btn-disable'"
-                        (click)="activeModal.dismiss('Cross click')" [disabled]="projectDetails.length == 0">
-                        {{ employee ? 'Update' : 'Add' }} {{projectDetails.length}}</button>
-
+                        [ngClass]="addEditForm.valid && projectDetails.length > 0 ? 'btn-enable' : 'btn-disable'"
+                        (click)="activeModal.dismiss('Cross click')"
+                        [disabled]="addEditForm.invalid || projectDetails.length == 0">
+                        {{ employee ? 'Update' : 'Add' }}</button>
 
                     <button type="button" class="btn-submit"
                         (click)="activeModal.dismiss('Cross click')">Cancel</button>
@@ -258,6 +260,9 @@
         </div>
     </div>
 </div>
+
+<!-- [disabled]="addEditForm.invalid || projectDetails.length == 0" -->
+
 
 
 
@@ -324,3 +329,4 @@
                     <button type="submit" value="submit" class="btn-submit"
                         [ngClass]="addEditForm.valid ? 'btn-enable' : 'btn-disable'" *ngIf='!employee'
                         (click)="activeModal.dismiss('Cross click')" [disabled]="!addEditForm.valid">Submit</button> -->
+<!-- <button (click)="clicked()">click</button> -->

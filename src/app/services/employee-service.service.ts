@@ -33,6 +33,7 @@ interface Employee {
 export class EmployeeServiceService {
   
   
+  
     private LoginKey = 'SignUpCredentials'
     private employeesKey = 'employeesData';
     private currentUserKey: any = 'currentUser';
@@ -108,7 +109,7 @@ export class EmployeeServiceService {
           technology: ['Angular'],
           experience: 2,
           noticePeriod: 30,
-          verified: 'yes'
+          verified: 'No'
         },
         {
           id: 2,
@@ -122,7 +123,7 @@ export class EmployeeServiceService {
           technology: ['React'],
           experience: 2,
           noticePeriod: 30,
-          verified: 'yes'
+          verified: 'No'
         },
         {
           id: 3,
@@ -136,7 +137,7 @@ export class EmployeeServiceService {
           technology: ['Java'],
           experience: 2,
           noticePeriod: 30,
-          verified: 'yes'
+          verified: 'No'
         }
       ];
       sessionStorage.setItem(this.employeesKey, JSON.stringify(initialData));

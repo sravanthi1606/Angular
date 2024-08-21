@@ -1,5 +1,5 @@
 
-import { Component, Input, SimpleChanges, ViewChild } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, Input, NO_ERRORS_SCHEMA, SimpleChanges, ViewChild } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FormControl, FormGroup, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule, Location } from '@angular/common';
@@ -19,8 +19,8 @@ interface User  {
   standalone:true,
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css'],
-  imports: [RouterLink, FormsModule, CommonModule,ReactiveFormsModule],
-
+  imports: [RouterLink, FormsModule, CommonModule,ReactiveFormsModule,],
+  // schemas: [ CUSTOM_ELEMENTS_SCHEMA]
 })
 
 
@@ -55,6 +55,8 @@ export class SignUPComponent {
        this.signUpForm.reset();
 
        this.router.navigate(['/login'])
+       console.log(this.signUpForm.value,'sign up');
+       
 
       // this.router.navigate(['/login'],{replaceUrl:true});
       // this.location.replaceState('/login');
@@ -101,7 +103,7 @@ export class SignUPComponent {
       gender : new FormControl(null),
       password: new FormControl(null, [Validators.required, Validators.minLength(5), Validators.maxLength(8), Validators.pattern('^(?=.*[A-Z])(?=.*[!@#$%^&*()_+\\-=[\\]{};:\'",.<>/?]).*$')]),
       confirmPassword: new FormControl(null, [Validators.required]),
-    },
+      },
     );
   }
   

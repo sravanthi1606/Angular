@@ -47,7 +47,7 @@
                                     contain 10 digits
                                 </small>
                             </div>
-                        </div>
+                        </div> 
 
                         <div class="col-lg-6">
                             <div class="gender">
@@ -153,9 +153,7 @@
                                 <button class="btn-submit" type="reset">cancel</button>
                             </div>
 
-                            <!-- [disabled]="!addEditForm.get('projectName')?.valid || !addEditForm.get('projectDescription')?.valid" -->
-                            <!-- [ngClass]="addEditForm.get('projectName')?.valid && addEditForm.get('projectDescription')?.valid ? 'btn-enable' : 'btn-disable'" -->
-
+                           
 
                             <p-table [value]="projectDetails" styleClass="p-datatable-striped"
                                 [tableStyle]="{'min-width': '10rem'}">
@@ -189,7 +187,7 @@
                                 </ng-template>
                             </p-table>
                             <br>
-                        </div>
+                        </div> 
 
 
                         <div class="col-lg-6">
@@ -251,7 +249,7 @@
                         [ngClass]="addEditForm.valid && projectDetails.length > 0 ? 'btn-enable' : 'btn-disable'"
                         (click)="activeModal.dismiss('Cross click')"
                         [disabled]="addEditForm.invalid || projectDetails.length == 0">
-                        {{ employee ? 'Update' : 'Add' }}</button>
+                        {{ employee ? 'Update' : 'Add' }} {{ projectDetails.length}}</button>
 
                     <button type="button" class="btn-submit"
                         (click)="activeModal.dismiss('Cross click')">Cancel</button>

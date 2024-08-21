@@ -50,7 +50,7 @@ export class EmployeeServiceService {
     }
     
     initalempData(){
-      if (!sessionStorage.getItem(this.employeesKey)) {
+      if (!localStorage.getItem(this.employeesKey)) {
         this.initializeEmployeeData();
       }
     }
@@ -96,51 +96,51 @@ export class EmployeeServiceService {
   
     private initializeEmployeeData() {
       const initialData: Employee[] = [
-        {
-          id: 1,
-          employee: 'Rani',
-          mobileNumber: 8976543216,
-          gender:'female',
-          company: 'abc',
-          ProjectDetails :[
-            { title: 'xyz',description: 'guqhrjh',}
-          ],
+        // {
+        //   id: 1,
+        //   employee: 'Rani',
+        //   mobileNumber: 8976543216,
+        //   gender:'female',
+        //   company: 'abc',
+        //   ProjectDetails :[
+        //     { title: 'xyz',description: 'guqhrjh',}
+        //   ],
          
-          technology: ['Angular'],
-          experience: 2,
-          noticePeriod: 30,
-          verified: 'No'
-        },
-        {
-          id: 2,
-          employee: 'Priya',
-          mobileNumber: 8976543216,
-          gender:'female',
-          company: 'abc',
-          ProjectDetails :[
-            { title: 'xys',description: 'adada',}
-          ],
-          technology: ['React'],
-          experience: 2,
-          noticePeriod: 30,
-          verified: 'No'
-        },
-        {
-          id: 3,
-          employee: 'Honey',
-          mobileNumber: 8976543216,
-          gender:'female',
-          company: 'abc',
-          ProjectDetails :[
-            { title: 'Ayz',description: 'vcbb',}
-          ],
-          technology: ['Java'],
-          experience: 2,
-          noticePeriod: 30,
-          verified: 'No'
-        }
+        //   technology: ['Angular'],
+        //   experience: 2,
+        //   noticePeriod: 30,
+        //   verified: 'No'
+        // },
+        // {
+        //   id: 2,
+        //   employee: 'Priya',
+        //   mobileNumber: 8976543216,
+        //   gender:'female',
+        //   company: 'abc',
+        //   ProjectDetails :[
+        //     { title: 'xys',description: 'adada',}
+        //   ],
+        //   technology: ['React'],
+        //   experience: 2,
+        //   noticePeriod: 30,
+        //   verified: 'No'
+        // },
+        // {
+        //   id: 3,
+        //   employee: 'Honey',
+        //   mobileNumber: 8976543216,
+        //   gender:'female',
+        //   company: 'abc',
+        //   ProjectDetails :[
+        //     { title: 'Ayz',description: 'vcbb',}
+        //   ],
+        //   technology: ['Java'],
+        //   experience: 2,
+        //   noticePeriod: 30,
+        //   verified: 'No'
+        // }
       ];
-      sessionStorage.setItem(this.employeesKey, JSON.stringify(initialData));
+      localStorage.setItem(this.employeesKey, JSON.stringify(initialData));
     }
   
     getData() {
@@ -207,7 +207,7 @@ export class EmployeeServiceService {
     }
   
     getSingleEmpData(): { data: Employee[] } {
-      const data = sessionStorage.getItem(this.employeesKey);
+      const data = localStorage.getItem(this.employeesKey);
       if (data) {
         return { data: JSON.parse(data) };
       }
@@ -217,7 +217,7 @@ export class EmployeeServiceService {
     addEmployee(employee: Employee) {
       const currentData = this.getSingleEmpData().data;
       currentData.push(employee);
-      sessionStorage.setItem(this.employeesKey, JSON.stringify(currentData));
+      localStorage.setItem(this.employeesKey, JSON.stringify(currentData));
       console.log('Employee added:', employee);
       console.log('Updated employee list:', currentData);
     }
@@ -225,7 +225,7 @@ export class EmployeeServiceService {
     deleteEmployee(id: number) {
       const currentData = this.getSingleEmpData().data;
       const updatedData = currentData.filter(employee => employee.id !== id);
-      sessionStorage.setItem(this.employeesKey, JSON.stringify(updatedData));
+      localStorage.setItem(this.employeesKey, JSON.stringify(updatedData));
       console.log('Updated employee list:', updatedData);
     }
   
@@ -235,7 +235,7 @@ export class EmployeeServiceService {
       const Index = currentData.findIndex(employees => employees.id == employee.id);
       console.log(Index)
       currentData[Index] = employee;
-      sessionStorage.setItem(this.employeesKey, JSON.stringify(currentData));
+      localStorage.setItem(this.employeesKey, JSON.stringify(currentData));
       console.log('Updated employee list:', currentData);
     }
   

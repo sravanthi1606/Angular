@@ -1,13 +1,11 @@
-import { Component, Output, ViewChild, EventEmitter, TemplateRef, inject, Input } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, Output, EventEmitter, TemplateRef, inject, Input } from '@angular/core';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgbActiveModal, NgbDatepickerModule, NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { EmployeeServiceService } from 'src/app/services/employee-service.service';
 import { MultiSelectModule } from 'primeng/multiselect';
-import { LoginComponent } from '../login/login.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { TableModule } from 'primeng/table';
-import { Title } from '@angular/platform-browser';
 import { RadioButtonModule } from 'primeng/radiobutton';
 
 interface EmployeeData {

@@ -64,6 +64,7 @@ export class EmployeeTableComponent {
   openEditEmpModal(employee: any) {
     const modalRef = this.modalService.open(AddeditemployeeComponent, { size: 'lg', scrollable: false });
     modalRef.componentInstance.employee = employee;
+    modalRef.componentInstance.technologName = this.technologyName
     modalRef.componentInstance.employeeAdded.subscribe(() => this.getEmployees());
     console.log(employee,'selected');
 

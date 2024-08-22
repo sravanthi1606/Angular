@@ -4,6 +4,8 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { Router, RouterLink } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { EmployeeServiceService } from 'src/app/services/employee-service.service';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 interface User {
   username: string;
@@ -17,11 +19,12 @@ interface User {
   templateUrl: './login.component.html',
   standalone:true,
   styleUrls: ['./login.component.css'],
-  imports: [RouterLink,ReactiveFormsModule,CommonModule],
+  imports: [RouterLink,ReactiveFormsModule,CommonModule,ToastModule],
+  providers:[MessageService]
 })
 export class LoginComponent {
 
-  constructor(private credentials: EmployeeServiceService,private router: Router) {}
+  constructor(private credentials: EmployeeServiceService,private router: Router,private messageService : MessageService) {}
 
 
 
@@ -48,8 +51,11 @@ export class LoginComponent {
       this.router.navigate(['/home'])
       this.credentials.addcurrentUserCredentials(foundUser)
 
-    }    
+    }   
+    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Message Content' });
+ 
   }
+
 
   ngOnInit() {
     this.loginForm = new FormGroup({

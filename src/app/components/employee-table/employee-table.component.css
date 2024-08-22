@@ -43,3 +43,10 @@ th{
     border: none;
     border-radius: 10px;
 }
+.category{
+    color: rgb(27, 144, 144);
+    font-size: 25px;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 0px 0px 0px 22px;
+
+}

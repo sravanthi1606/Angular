@@ -44,12 +44,12 @@ input[type=number]::-webkit-inner-spin-button {
     margin: 0;
 }
 
-.gender  label{
+/* .gender  label{
     padding: 5px;
-}
+}*/
 .gender input{
     margin: 0px 0px 0px 10px;
-}
+} 
 .modal-title{
     font-size: 25px;
     font-family: 'Times New Roman', Times, serif;

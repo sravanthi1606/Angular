@@ -73,3 +73,12 @@ table,th,td{
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
 } */
+
+.verified{
+    padding: 0px 0px 0px 10px;
+}
+.verify{
+    width: 20px;
+    height: 17px;
+    padding: 12px 0px;
+}

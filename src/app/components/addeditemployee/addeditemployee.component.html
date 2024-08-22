@@ -79,8 +79,6 @@
                             </div>
                         </div>
 
-
-
                         <div class="col-lg-6">
                             <div class="mb-3">
                                 <label>Company Name :</label><br>
@@ -99,8 +97,6 @@
                             <input type="text" [value]="addEditForm.get('category')?.value" disabled
                                 class="form-control">
                         </div>
-
-                        <!-- *ngIf="!employee" -->
 
                         <div class="col-lg-6">
                             <div class="mb-3">
@@ -209,7 +205,6 @@
 
                         </div>
 
-
                         <div class="col-lg-6">
                             <div class="mb-3">
                                 <label>Experience :</label><br>
@@ -245,7 +240,7 @@
                                 </small>
                             </div>
                         </div>
-
+<!-- 
                         <div class="col-lg-6">
                             <div *ngIf="employee">
                                 <div>
@@ -254,6 +249,21 @@
                                         <option value="No">No</option>
                                         <option value="Yes">Yes</option>
                                     </select>
+                                </div>
+                            </div>
+
+                            <div *ngIf="addEditForm.get('verified')?.invalid && addEditForm.get('verified')?.touched ">
+                                <small *ngIf="addEditForm.get('verified')?.errors?.['verified']">Verified is a required
+                                    field</small>
+                            </div>
+                        </div> -->
+
+                        <div class="col-lg-6">
+                            <div *ngIf="employee">
+                                <div>
+                                    <input type="checkbox" formControlName="verified" class="verify">  
+                                    <label  class="verified">Verified</label>
+                                                                    
                                 </div>
                             </div>
 
@@ -277,8 +287,6 @@
                         (click)="activeModal.dismiss('Cross click')">Cancel</button>
                 </div>
             </form>
-
-
         </div>
     </div>
 </div>

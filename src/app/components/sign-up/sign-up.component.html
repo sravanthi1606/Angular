@@ -97,8 +97,7 @@
                             </div>
                             <div>
                                 <small *ngIf="signUpForm.get('confirmPassword')?.invalid && signUpForm.get('confirmPassword')?.touched && signUpForm.get('confirmPassword')?.errors?.['required']">Confirm
-                                    Password
-                                    is a required field</small>
+                                    Password is a required field</small>
                                 <small *ngIf="!signUpForm.get('confirmPassword')?.invalid &&  !isPasswordMatching">Password
                                     doesnt match</small>
                             </div>

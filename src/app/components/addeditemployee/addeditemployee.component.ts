@@ -118,6 +118,7 @@ export class AddeditemployeeComponent {
         experience: Number(this.addEditForm.value.experience),
         noticePeriod: Number(this.addEditForm.value.noticePeriod),
         verified: this.addEditForm.value.verified,
+        // verified : 'false'
       }
 
       this.empDetails.addEmployee(newEmployee)
@@ -162,7 +163,7 @@ export class AddeditemployeeComponent {
       // technology: new FormControl(this.employee ? this.employee.technology.map((tech: any) => ({ name: tech })) : [], Validators.required),
       experience: new FormControl(this.employee ? this.employee.experience : null, [Validators.required]),
       noticePeriod: new FormControl(this.employee ? this.employee.noticePeriod : null, Validators.required),
-      verified: new FormControl(this.employee ? this.employee.verified : 'No'),
+      verified: new FormControl(this.employee ? false : false),
     });
 
 

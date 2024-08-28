@@ -151,28 +151,28 @@ export class EmployeeServiceService {
             technologyName: 'Frontend',
             category: 'Frontend',
             imgSrc: 'assets/frontened.jpeg',
-            technologies: ['Angular', 'React', 'UI']
+            technologies: ['Angular', 'React', 'TypeScript', 'React Native']
           },
           {
             id: 2,
             technologyName: 'Mern Stack',
             category: 'Mern Stack',
             imgSrc: 'assets/mernstack.png',
-            technologies: ['React']
+            technologies: ['MongoDB', 'Express', 'Node js']
           },
           {
             id: 3,
             technologyName: 'Backend',
             category: 'Backend',
             imgSrc: 'assets/backened.jpeg',
-            technologies: ['Dotnet']
+            technologies: ['Dotnet','JavaScript', 'Ruby', 'PHP',]
           },
           {
             id: 4,
             technologyName: 'Full Stack',
             category: 'Full Stack',
             imgSrc: 'assets/fullstack.png',
-            technologies: ['Java', 'Python']
+            technologies: ['Java', 'Python','ExpressJS', 'Django']
           },
           {
             id: 5,

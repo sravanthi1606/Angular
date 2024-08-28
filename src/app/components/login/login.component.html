@@ -7,7 +7,7 @@
                 <div class="form">
                     <p-toast></p-toast>
                     <div>
-                        <img src={{imgUrl}} width="130px" height="130px">
+                        <img [src]='imgUrl' width="130px" height="130px">
                     </div>
                     <div>
                         <form (ngSubmit)="onSubmitLogin()" [formGroup]="loginForm">

@@ -9,6 +9,8 @@ import { TableModule } from 'primeng/table';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { TooltipModule } from 'primeng/tooltip';
+
 
 interface EmployeeData {
   id: number;
@@ -31,7 +33,7 @@ interface City {
   templateUrl: './addeditemployee.component.html',
   styleUrls: ['./addeditemployee.component.css'],
   standalone: true,
-  imports: [FormsModule, NgbDatepickerModule, ReactiveFormsModule, CommonModule, MultiSelectModule, DropdownModule, TableModule, RadioButtonModule,ToastModule],
+  imports: [FormsModule, NgbDatepickerModule, ReactiveFormsModule, CommonModule, MultiSelectModule, DropdownModule, TableModule, RadioButtonModule,ToastModule,TooltipModule],
   providers: [NgbModalConfig, NgbModal,MessageService],
 
 })
@@ -59,7 +61,7 @@ export class AddeditemployeeComponent {
   editProjectId: number | null = null;
   Toastify:any;
   selectedProject: any; 
-
+  input : boolean = true;
 
   // showToast(message: string) {
   //   this.Toastify({
@@ -72,9 +74,16 @@ export class AddeditemployeeComponent {
   //   }).showToast();
   // }
 
-
+  get isVerifiedDisabled(): boolean {
+    // Return true if `verified` is true, otherwise false
+    return this.employee ? this.employee.verified : false;
+  }
 
   OnAddEditSubmit() {
+
+    if (this.isVerifiedDisabled) {
+      this.addEditForm.value.verified = true;
+    }
 
     if (this.employee) {
       const editedEmp = {
@@ -91,6 +100,7 @@ export class AddeditemployeeComponent {
         experience: Number(this.addEditForm.value.experience),
         noticePeriod: Number(this.addEditForm.value.noticePeriod),
         verified: this.addEditForm.value.verified,
+        // verified: this.employee.verified === true ? true : this.addEditForm.value.verified,
       }
       console.log(editedEmp,'editedEmp');
       
@@ -163,7 +173,11 @@ export class AddeditemployeeComponent {
       // technology: new FormControl(this.employee ? this.employee.technology.map((tech: any) => ({ name: tech })) : [], Validators.required),
       experience: new FormControl(this.employee ? this.employee.experience : null, [Validators.required]),
       noticePeriod: new FormControl(this.employee ? this.employee.noticePeriod : null, Validators.required),
-      verified: new FormControl(this.employee ? false : false),
+      verified: new FormControl(this.employee ? this.employee.verified : false),
+      // verified: new FormControl({
+      //   value: this.employee ? this.employee.verified  : false,
+      //   disabled: !this.employee.verified  // Initialize as disabled
+      // })
     });
 
 
@@ -185,6 +199,10 @@ export class AddeditemployeeComponent {
       
       console.log(this.employee.technology,'this.employee.technology',this.techName,'this.techName');
       console.log(this.employee.verified,'this.employee.verified');
+
+      if (this.employee.verified) {
+        this.addEditForm.get('verified')?.disable();
+      }
     }
   }
 
@@ -230,11 +248,15 @@ export class AddeditemployeeComponent {
       projectDescription: details.description
     });
   }
+  disabledDelete(id:number){
+    return this.editProjectId === id
+  }
 
   resetProjectForm() {
     this.projectDet.reset();
     this.editMode = false;
     this.selectedProject = null;
+    this.editProjectId = null
   }
 
 }

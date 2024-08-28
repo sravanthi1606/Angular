@@ -11,7 +11,7 @@
 }
 
 .submitEmp {
-    text-align: center;
+    text-align: right;
 }
 
 .btn-submit {
@@ -31,6 +31,7 @@ small {
     color: red;
     font-weight: bold;
 }
+
 .btn-disable {
     cursor: not-allowed;
     opacity: 0.5;
@@ -39,6 +40,7 @@ small {
 .btn-enable {
     cursor: pointer;
 }
+
 input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -48,25 +50,31 @@ input[type=number]::-webkit-inner-spin-button {
 /* .gender  label{
     padding: 5px;
 }*/
-.gender input{
+.gender input {
     margin: 0px 0px 0px 10px;
-} 
-.modal-title{
+}
+
+.modal-title {
     font-size: 25px;
     font-family: 'Times New Roman', Times, serif;
-    color:  rgb(27, 144, 144);
+    color: rgb(27, 144, 144);
     font-weight: 400;
 }
-table,th,td{
+
+table,
+th,
+td {
     border: 1px solid black;
 }
 
-.technology{
+.technology {
     width: 100%;
 }
-.category{
+
+.category {
     padding: 3px;
 }
+
 /* .p-multiselect .p-multiselect-trigger {
     background: transparent;
     color: #6c757d;
@@ -75,11 +83,69 @@ table,th,td{
     border-bottom-right-radius: 3px;
 } */
 
-.verified{
+.verified {
     padding: 0px 0px 0px 10px;
 }
-.verify{
+
+.verify {
     width: 20px;
     height: 17px;
     padding: 12px 0px;
+}
+
+:host ::ng-deep .p-multiselect {
+    width: 100%;
+}
+
+.add-modal {
+    display: flex;
+    flex-direction: column;
+    /* max-height: 100vh; */
+}
+
+.modal-header,
+.modal-footer {
+    position: sticky;
+    background-color: white;
+    z-index: 10;
+    padding: 1rem;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.modal-header {
+    top: 0;
+}
+
+.submitEmp {
+    bottom: 0;
+    border-top: 1px solid #dee2e6;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    margin-bottom: 60px;
+}
+
+.scrollable-content {
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.btn:disabled {
+    border: none !important;
+}
+
+.description-column {
+    word-wrap: break-word;
+    white-space: normal;
+    max-width: 700px;
+    /* overflow-wrap: break-word; */
+}
+.validation-red{
+    color: red;
 }

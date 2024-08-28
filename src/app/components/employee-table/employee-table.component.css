@@ -2,7 +2,7 @@ table {
     background-color: rgb(155, 214, 214);
     margin: 30px;
     width: 95%;
-    border: 1px solid black;
+    /* border: 1px solid black;  */
 }
 
 td,
@@ -13,9 +13,13 @@ th {
     text-align: center;
 }
 
-th{
+th {
     font-family: 'Times New Roman', Times, serif;
 }
+
+/* tr:nth-child(even) {
+    background-color: rgb(182, 177, 177);
+  } */
 
 
 .back_button {
@@ -43,7 +47,8 @@ th{
     border: none;
     border-radius: 10px;
 }
-.category{
+
+.category {
     color: rgb(27, 144, 144);
     font-size: 25px;
     font-family: 'Times New Roman', Times, serif;

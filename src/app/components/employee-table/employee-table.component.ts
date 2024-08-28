@@ -5,11 +5,12 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EmployeeServiceService } from 'src/app/services/employee-service.service';
 import { AddeditemployeeComponent } from '../addeditemployee/addeditemployee.component';
 import { EmployeeDetailsComponent } from '../employee-details/employee-details.component';
+import { TooltipModule } from 'primeng/tooltip';
 
 @Component({
   selector: 'app-employee-table',
   standalone: true,
-  imports: [CommonModule, RouterLink, EmployeeDetailsComponent, AddeditemployeeComponent],
+  imports: [CommonModule, RouterLink, EmployeeDetailsComponent, AddeditemployeeComponent,TooltipModule],
   templateUrl: './employee-table.component.html',
   styleUrls: ['./employee-table.component.css']
 })

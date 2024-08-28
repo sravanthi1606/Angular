@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <p class="category">Category : {{technologyName}}</p>
-                <table>
+                <table class="tabel table-striped">
                     <thead>
                         <tr>
                             <th scope="col">Employee</th>
@@ -35,8 +35,9 @@
                                 <td>{{ item.noticePeriod }}</td>
                                 <td>{{ item.verified }}</td>
                                 <td>
-                                    <button class="btn btn-warning m-2" (click)="openEditEmpModal(item)"><i class="bi bi-pencil-square"></i></button>
-                                    <button class="btn btn-danger m-2" (click)="onDelete(item.id)"><i class="bi bi-trash3-fill"></i></button>
+                                    <!-- <input type="text" pInputText pTooltip="Enter your username" tooltipPosition="bottom" placeholder="Bottom"> -->
+                                    <button class="btn" (click)="openEditEmpModal(item)" pTooltip="Edit" tooltipPosition="bottom" ><i class="bi bi-pencil-square" ></i></button>
+                                    <button class="btn" (click)="onDelete(item.id)" pTooltip="Delete" tooltipPosition="bottom" ><i class="bi bi-trash3-fill"></i></button>
                                 </td>
                             </tr>
                         </ng-container>

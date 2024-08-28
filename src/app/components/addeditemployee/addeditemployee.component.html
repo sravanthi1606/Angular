@@ -6,20 +6,21 @@
         <button type="button" class="btn-close" aria-label="Close"
             (click)="activeModal.dismiss('Cross click')"></button>
     </div>
-    <div class="modal-body">
+    <div class="modal-body ">
         <div>
             <p-toast></p-toast>
             <form [formGroup]="addEditForm" (ngSubmit)="OnAddEditSubmit()">
-                <div class="container">
+                <div class="container scrollable-content">
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="mb-3">
-                                <label>Name :</label><br>
+                            <div class="mb-2">
+                                <label>Name <span class="validation-red">*</span></label><br>
                                 <input type="text" class="form-control" name="employee" formControlName="employee"
                                     placeholder="name">
                             </div>
 
-                            <div *ngIf="addEditForm.get('employee')?.invalid && addEditForm.get('employee')?.touched ">
+                            <div *ngIf="addEditForm.get('employee')?.invalid && addEditForm.get('employee')?.touched"
+                                class="mb-2">
                                 <small *ngIf="addEditForm.get('employee')?.errors?.['required']">Employee Name is a
                                     required field
                                 </small>
@@ -33,14 +34,14 @@
                         </div>
 
                         <div class="col-lg-6">
-                            <div class="mb-3">
-                                <label>Mobile Number :</label><br>
+                            <div class="mb-2">
+                                <label>Mobile Number <span class="validation-red">*</span></label><br>
                                 <input type="tel" class="form-control" name="mobileNumber"
                                     formControlName="mobileNumber" placeholder="mobile number">
                             </div>
 
-                            <div
-                                *ngIf="addEditForm.get('mobileNumber')?.invalid && addEditForm.get('mobileNumber')?.touched ">
+                            <div *ngIf="addEditForm.get('mobileNumber')?.invalid && addEditForm.get('mobileNumber')?.touched "
+                                class="mb-2">
                                 <small *ngIf="addEditForm.get('mobileNumber')?.errors?.['required']">Mobile Number is a
                                     required field
                                 </small>
@@ -52,7 +53,7 @@
 
                         <div class="col-lg-6">
                             <div class="gender">
-                                <label>Gender</label><br>
+                                <label>Gender <span class="validation-red">*</span></label><br>
                                 <span *ngFor="let category of genderCategory" class="field-checkbox gender">
                                     <p-radioButton [inputId]="category.key" [value]="category.name"
                                         formControlName="gender" class="category"></p-radioButton>
@@ -62,64 +63,63 @@
                         </div>
 
                         <div class="col-lg-6">
-                            <div class="mb-3">
-                                <label>Email :</label><br>
-                                <input type="email" class="form-control" name="email"
-                                    formControlName="email" placeholder="email">
+                            <div class="mb-2">
+                                <label>Email <span class="validation-red">*</span></label><br>
+                                <input type="email" class="form-control" name="email" formControlName="email"
+                                    placeholder="email">
                             </div>
 
-                            <div
-                                *ngIf="addEditForm.get('email')?.invalid && addEditForm.get('email')?.touched ">
+                            <div *ngIf="addEditForm.get('email')?.invalid && addEditForm.get('email')?.touched "
+                                class="mb-2">
                                 <small *ngIf="addEditForm.get('email')?.errors?.['required']">Email is a
                                     required field
                                 </small>
                                 <small *ngIf="addEditForm.get('email')?.errors?.['email']">Enter valid email
-                                    
+
                                 </small>
                             </div>
                         </div>
 
                         <div class="col-lg-6">
-                            <div class="mb-3">
-                                <label>Company Name :</label><br>
+                            <div class="mb-2">
+                                <label>Company Name <span class="validation-red">*</span></label><br>
                                 <input type="text" class="form-control" name="company" formControlName="company"
                                     placeholder="company">
                             </div>
 
-                            <div *ngIf="addEditForm.get('company')?.invalid && addEditForm.get('company')?.touched ">
+                            <div *ngIf="addEditForm.get('company')?.invalid && addEditForm.get('company')?.touched "
+                                class="mb-2">
                                 <small *ngIf="addEditForm.get('company')?.errors?.['required']">Company is a required
                                     field</small>
                             </div>
                         </div>
 
                         <div class="col-lg-6">
-                            <label>Category :</label>
+                            <label>Category <span class="validation-red">*</span></label>
                             <input type="text" [value]="addEditForm.get('category')?.value" disabled
                                 class="form-control">
                         </div>
 
                         <div class="col-lg-6">
-                            <div class="mb-3">
-                                <label>Technologies :</label><br>
-                                <p-multiSelect [options]="techName" [(ngModel)]="selectedtech" optionLabel="name"
-                                    placeholder="Select Technology" formControlName="technology" class="technology">
+                            <div class="mb-2">
+                                <label>Technologies <span class="validation-red">*</span></label><br>
+                                <p-multiSelect [options]="techName" [filter]="true" [virtualScroll]="false"
+                                    [(ngModel)]="selectedtech" optionLabel="name" placeholder="Select Technology"
+                                    formControlName="technology" class="technology">
                                 </p-multiSelect>
                             </div>
 
-                            <div>
-                                <div
-                                    *ngIf="addEditForm.get('technology')?.invalid && addEditForm.get('technology')?.touched ">
-                                    <small *ngIf="addEditForm.get('technology')?.errors?.['required']">Technology is a
-                                        required field
-                                    </small>
-                                </div>
+                            <div  *ngIf="addEditForm.get('technology')?.invalid && addEditForm.get('technology')?.touched " class="mb-2">
+                                <small *ngIf="addEditForm.get('technology')?.errors?.['required']">Technology is a
+                                    required field
+                                </small>
                             </div>
                         </div>
 
                         <div class="col-lg-12">
                             <form [formGroup]="projectDet" (ngSubmit)="OnProjectDetail()">
                                 <div>
-                                    <label style="font-size: 20px;">Project Details</label>
+                                    <label style="font-size: 20px;">Project Details <span class="validation-red" style="font-size: 15px;">*</span></label>
                                     <div class="col-lg-12">
                                         <div class="mb-3">
                                             <input type="text" class="form-control" name="projectName"
@@ -162,33 +162,45 @@
                                             [ngClass]="project.description  && project.title ? 'btn-enable' : 'btn-disable'">
                                             {{ editMode ? 'Update' : 'Add' }} Project
                                         </button>
-                                        <button class="btn-submit"  (click)="resetProjectForm()">cancel</button>
+                                        <button class="btn-submit" (click)="resetProjectForm()">cancel</button>
                                     </div>
 
 
 
                                     <p-table [value]="projectDetails" styleClass="p-datatable-striped"
-                                        [tableStyle]="{'min-width': '10rem'}">
+                                        [tableStyle]="{'min-width': '10rem'}" [scrollable]="true">
                                         <ng-template pTemplate="header">
                                             <tr>
-                                                <th>Title</th>
-                                                <th>Description</th>
-                                                <th>Actions</th>
+                                                <th style="width: 150px">Title</th>
+                                                <th style="width: 200px">Description</th>
+                                                <th style="width: 70px">Actions</th>
                                             </tr>
                                         </ng-template>
                                         <ng-template pTemplate="body" let-details>
                                             <tr>
-                                                <td>{{details.title}}</td>
-                                                <td>{{details.description}}</td>
+                                                <td><span pTooltip={{details.title}}
+                                                        tooltipPosition="top">{{details.title.slice(0,14)}}</span></td>
+                                                <td class="description-column">{{details.description}}</td>
                                                 <td>
-                                                    <button class="btn btn-warning m-2" type="button"
+                                                    <div style="display: flex; gap: 10px;">
+                                                        <button class="btn" type="button" pTooltip="Edit"
+                                                            tooltipPosition="bottom" (click)="editProject(details)">
+                                                            <i class="bi bi-pencil-square"></i>
+                                                        </button>
+                                                        <button class="btn" type="button" pTooltip="Delete"
+                                                            tooltipPosition="bottom" (click)="deleteProject(details.id)"
+                                                            [disabled]="disabledDelete(details.id)">
+                                                            <i class="bi bi-trash3-fill"></i>
+                                                        </button>
+                                                    </div>
+                                                    <!-- <button class="btn" type="button" pTooltip="Edit" tooltipPosition="bottom"
                                                         (click)="editProject(details)">
                                                         <i class="bi bi-pencil-square"></i>
                                                     </button>
-                                                    <button class="btn btn-danger m-2" type="button"
-                                                        (click)="deleteProject(details.id)">
+                                                    <button class="btn" type="button" pTooltip="Delete" tooltipPosition="bottom"
+                                                        (click)="deleteProject(details.id)" [disabled]="disabledDelete(details.id)">
                                                         <i class="bi bi-trash3-fill"></i>
-                                                    </button>
+                                                    </button> -->
                                                 </td>
                                             </tr>
                                         </ng-template>
@@ -206,22 +218,22 @@
                         </div>
 
                         <div class="col-lg-6">
-                            <div class="mb-3">
-                                <label>Experience :</label><br>
+                            <div class="mb-2">
+                                <label>Experience <span class="validation-red">*</span></label><br>
                                 <input type="number" class="form-control" name="experience" formControlName="experience"
                                     placeholder="Experience">
                             </div>
 
                             <div
-                                *ngIf="addEditForm.get('experience')?.invalid && addEditForm.get('experience')?.touched ">
+                                *ngIf="addEditForm.get('experience')?.invalid && addEditForm.get('experience')?.touched " class="mb-2">
                                 <small *ngIf="addEditForm.get('experience')?.errors?.['required']">Experience is a
                                     required field</small>
                             </div>
                         </div>
 
                         <div class="col-lg-6">
-                            <div class="mb-3">
-                                <label>Notice Period :</label><br>
+                            <div class="mb-2">
+                                <label>Notice Period <span class="validation-red">*</span></label><br>
                                 <!-- <p-dropdown [options]="cities" [(ngModel)]="selectedCity" placeholder="Select a City" [editable]="true" optionLabel="name"></p-dropdown> -->
                                 <select name="noticePeriod" class="form-select" formControlName="noticePeriod"
                                     placeholder="Select Notice period">
@@ -234,13 +246,13 @@
                             </div>
 
                             <div
-                                *ngIf="addEditForm.get('noticePeriod')?.invalid && addEditForm.get('noticePeriod')?.touched ">
+                                *ngIf="addEditForm.get('noticePeriod')?.invalid && addEditForm.get('noticePeriod')?.touched " class="mb-2">
                                 <small *ngIf="addEditForm.get('noticePeriod')?.errors?.['required']">Notice Period is a
                                     required field
                                 </small>
                             </div>
                         </div>
-<!-- 
+                        <!-- 
                         <div class="col-lg-6">
                             <div *ngIf="employee">
                                 <div>
@@ -261,9 +273,10 @@
                         <div class="col-lg-6">
                             <div *ngIf="employee">
                                 <div>
-                                    <input type="checkbox" formControlName="verified" class="verify">  
-                                    <label  class="verified">Verified</label>
-                                                                    
+                                    <input type="checkbox" formControlName="verified" class="verify"
+                                    [attr.disabled]="isVerifiedDisabled ? true : null" >
+                                    <label class="verified" >Verified {{addEditForm.get('verified')?.value}}</label>
+
                                 </div>
                             </div>
 
@@ -273,13 +286,17 @@
                             </div>
                         </div>
 
+                        
                     </div>
                 </div>
+                <!-- [ngClass]="addEditForm.valid && projectDetails.length > 0 || editMode ? 'btn-enable' : 'btn-disable'"
+                        (click)="activeModal.dismiss('Cross click')"
+                        [disabled]="addEditForm.invalid || projectDetails.length == 0 || editMode"> -->
                 <div class="col-lg-12 submitEmp">
                     <button type="submit" value="submit" class="btn-submit"
-                        [ngClass]="addEditForm.valid && projectDetails.length > 0 ? 'btn-enable' : 'btn-disable'"
+                        [ngClass]="(addEditForm.valid && projectDetails.length > 0 && !editMode) ? 'btn-enable' : 'btn-disable'"
                         (click)="activeModal.dismiss('Cross click')"
-                        [disabled]="addEditForm.invalid || projectDetails.length == 0">
+                        [disabled]="addEditForm.invalid || projectDetails.length == 0 || editMode">
                         {{ employee ? 'Update' : 'Add' }}
                     </button>
 
@@ -289,6 +306,17 @@
             </form>
         </div>
     </div>
+
+    <!-- <div class="modal-footer">
+        <button type="submit" value="submit" class="btn-submit"
+            [ngClass]="addEditForm.valid && projectDetails.length > 0 ? 'btn-enable' : 'btn-disable'"
+            (click)="activeModal.dismiss('Cross click')"
+            [disabled]="addEditForm.invalid || projectDetails.length == 0">
+            {{ employee ? 'Update' : 'Add' }}
+        </button>
+
+        <button type="button" class="btn-submit" (click)="activeModal.dismiss('Cross click')">Cancel</button>
+    </div> -->
 </div>
 
 <!-- [disabled]="addEditForm.invalid || projectDetails.length == 0" -->

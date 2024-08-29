@@ -2,7 +2,7 @@ table {
     background-color: rgb(155, 214, 214);
     margin: 30px;
     width: 95%;
-    /* border: 1px solid black;  */
+    border: 1px solid black; 
 }
 
 td,
@@ -54,4 +54,26 @@ th {
     font-family: 'Times New Roman', Times, serif;
     padding: 0px 0px 0px 22px;
 
+}
+
+/* .custom-table {
+    background-color:  rgb(27, 144, 144);
+    margin: 40%;
+} */
+
+
+/* 
+:host ::ng-deep .p-datatable{
+    background-color:  rgb(27, 144, 144);
+    margin: 0px 20px;
+} */
+
+/* :host ::ng-deep .p-table {
+    background-color: rgb(27, 144, 144) !important;
+    margin: 0px 20px;
+} */
+
+:host ::ng-deep .p-datatable {
+    background-color: rgb(27, 144, 144);
+    margin: 0px 50px;
 }

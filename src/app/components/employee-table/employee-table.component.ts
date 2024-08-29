@@ -6,11 +6,12 @@ import { EmployeeServiceService } from 'src/app/services/employee-service.servic
 import { AddeditemployeeComponent } from '../addeditemployee/addeditemployee.component';
 import { EmployeeDetailsComponent } from '../employee-details/employee-details.component';
 import { TooltipModule } from 'primeng/tooltip';
+import { TableModule } from 'primeng/table';
 
 @Component({
   selector: 'app-employee-table',
   standalone: true,
-  imports: [CommonModule, RouterLink, EmployeeDetailsComponent, AddeditemployeeComponent,TooltipModule],
+  imports: [CommonModule, RouterLink, EmployeeDetailsComponent, AddeditemployeeComponent,TooltipModule,TableModule],
   templateUrl: './employee-table.component.html',
   styleUrls: ['./employee-table.component.css']
 })

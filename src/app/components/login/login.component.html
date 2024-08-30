@@ -5,7 +5,6 @@
             <div class="col-lg-4"></div>
             <div class="col-lg-4">
                 <div class="form">
-                    <p-toast></p-toast>
                     <div>
                         <img [src]='imgUrl' width="130px" height="130px">
                     </div>
@@ -35,8 +34,10 @@
                             <div *ngIf="loginError" class="error-message">
                                 <p>{{ loginError }}</p>
                             </div>
-                            <button class="login" [ngClass]="loginForm.valid ? 'btn-enable' : 'btn-disable'"
-                                type="submit" [disabled]='!loginForm.valid'>login</button>
+                            <p-toast></p-toast>
+                            <button class="login p-button-success" [ngClass]="loginForm.valid ? 'btn-enable' : 'btn-disable'"
+                                type="submit" [disabled]='!loginForm.valid'  pButton pRipple>login</button>
+                            <!-- <button type="button" pButton pRipple (click)="show()" label="Show" class="p-button-success"></button> -->
 
                             <div class="sign">
                                 <p>New User ? <a href="signUp">Sign Up</a></p>
@@ -49,7 +50,3 @@
         </div>
     </div>
 </div>
-
-
-
-

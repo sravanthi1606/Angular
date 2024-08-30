@@ -107,7 +107,7 @@ export class AddeditemployeeComponent {
       
       const updateEmp = { ...this.employee, ...editedEmp }
       this.empDetails.EditUpdateEmployee(updateEmp)
-      this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Message Content' });
+      this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Updated Employee' });
       console.log(this.messageService,'messageService');
       console.log( 'noticePeriod', Number(this.addEditForm.value.noticePeriod));
       
@@ -138,9 +138,9 @@ export class AddeditemployeeComponent {
     }
     this.employeeAdded.emit(true);
     this.addEditForm.reset();
+    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Add Employee' });
     console.log('submit');
     
-    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Message Content' });
 
   }
 

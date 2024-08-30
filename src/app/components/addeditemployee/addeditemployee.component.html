@@ -8,7 +8,6 @@
     </div>
     <div class="modal-body ">
         <div>
-            <p-toast></p-toast>
             <form [formGroup]="addEditForm" (ngSubmit)="OnAddEditSubmit()">
                 <div class="container scrollable-content">
                     <div class="row">
@@ -293,6 +292,7 @@
                         (click)="activeModal.dismiss('Cross click')"
                         [disabled]="addEditForm.invalid || projectDetails.length == 0 || editMode"> -->
                 <div class="col-lg-12 submitEmp">
+                    <p-toast></p-toast>
                     <button type="submit" value="submit" class="btn-submit"
                         [ngClass]="(addEditForm.valid && projectDetails.length > 0 && !editMode) ? 'btn-enable' : 'btn-disable'"
                         (click)="activeModal.dismiss('Cross click')"

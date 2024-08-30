@@ -1,8 +1,7 @@
-
 <app-navbar></app-navbar>
 
 <div>
-  <div class="container" *ngIf="!show">
+  <!-- <div class="container" *ngIf="!show">
     <div class="row">
       <div class="col-lg-3 col-md-6 col-sm-6" *ngFor="let x of technologie" (click)="showTable(x)">
         <div class="card" style="">
@@ -13,8 +12,37 @@
         </div>
       </div>
     </div>
+  </div> -->
+
+
+
+  <div class="container" *ngIf="!show">
+    <div class="row">
+      <div class="col-lg-3 col-md-6 col-sm-6" *ngFor="let x of technologie" (click)="showTable(x)">
+        <div class="card">
+          <p-card >
+            <ng-template pTemplate="header">
+              <img src={{x.imgSrc}} class="card-img-top" alt="...">
+            </ng-template>
+            <h5 class="card-title text-center">{{x.technologyName}}</h5>
+          </p-card>
+        </div>
+        
+      </div>
+    </div>
   </div>
+
+
   <div *ngIf="show">
-    <app-employee-table [shows]="show" (back)="onBack()" [techs]="tech" [technologyName]="category"></app-employee-table>
+    <app-employee-table [shows]="show" (back)="onBack()" [techs]="tech"
+      [technologyName]="category"></app-employee-table>
   </div>
+
+  <!-- <div class="card flex justify-content-center gap-2">
+    <p-toast></p-toast>
+    <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
+    <p-button (click)="confirm1()"  label="Confirm"></p-button>
+    <p-button (click)="confirm2()" label="Delete" class="p-button-danger"></p-button>
+</div> -->
+
 </div>

@@ -6,6 +6,9 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { EmployeeServiceService } from 'src/app/services/employee-service.service';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule, ɵBrowserAnimationBuilder } from '@angular/platform-browser/animations';
+
 
 interface User {
   username: string;
@@ -17,60 +20,88 @@ interface User {
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  standalone:true,
+  standalone: true,
   styleUrls: ['./login.component.css'],
-  imports: [RouterLink,ReactiveFormsModule,CommonModule,ToastModule],
-  providers:[MessageService]
+  imports: [RouterLink, ReactiveFormsModule, CommonModule, ToastModule],
+  providers: [MessageService]
 })
 export class LoginComponent {
 
-  constructor(private credentials: EmployeeServiceService,private router: Router,private messageService : MessageService) {}
+  constructor(private credentials: EmployeeServiceService, private router: Router, private messageService: MessageService) {  }
 
 
 
   public imgUrl = "https://static.vecteezy.com/system/resources/previews/008/214/517/non_2x/abstract-geometric-logo-or-infinity-line-logo-for-your-company-free-vector.jpg";
-  loginForm! : FormGroup
-  public credentialData : User[] = [];
+  loginForm!: FormGroup
+  public credentialData: User[] = [];
   public loginError: string | null = null;
 
 
 
 
   onSubmitLogin() {
-  
-    const foundUser = this.credentialData.find((cre : any) => cre.username === this.loginForm.value.username);
-    
+
+    const foundUser = this.credentialData.find((cre: any) => cre.username === this.loginForm.value.username);
+
     if (!foundUser) {
       this.loginForm.get('username')?.setErrors({ userNotFound: true });
-    } else if (foundUser.password  !== this.loginForm.value.password) {
+    } else if (foundUser.password !== this.loginForm.value.password) {
       this.loginForm.get('password')?.setErrors({ passwordMismatch: true });
     }
     else {
       this.loginForm.reset();
       this.credentials.initalempData();
+      this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Successfully LOggedIn' });
       this.router.navigate(['/home'])
       this.credentials.addcurrentUserCredentials(foundUser)
+     
 
-    }   
-    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Message Content' });
- 
+    }
+
   }
 
 
   ngOnInit() {
     this.loginForm = new FormGroup({
-      username : new FormControl(null,[Validators.required]),
-      password : new FormControl(null,[Validators.required]),
+      username: new FormControl(null, [Validators.required]),
+      password: new FormControl(null, [Validators.required]),
     })
     this.getLoginCredentials();
+    
 
   }
 
   getLoginCredentials() {
     this.credentialData = this.credentials.getCredentials().data;
   }
+
+  show() {
+    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Message Content' });
+}
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// setTimeout(() => {
+//   this.router.navigate(['/home']);
+//   this.credentials.addcurrentUserCredentials(foundUser);
+// }, 800); 
 
 
 

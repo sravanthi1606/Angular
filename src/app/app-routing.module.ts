@@ -8,44 +8,40 @@ import { EmployeeTableComponent } from './components/employee-table/employee-tab
 import { NoPageFoundComponent } from './components/no-page-found/no-page-found.component';
 
 export const APP_ROUTES: Routes = [
-  {
-    path: '',
-    redirectTo: '/login',
-    pathMatch: 'full'
-},
-{
-    path: 'login',
-    component: LoginComponent
-},
-{
-    path: 'signUp',
-    component: SignUPComponent
-},
-{
-    path: 'home',
-    component: HomeComponent,
-},
-{
-    path: 'profile',
-    component: EmployeeDetailsComponent
-},
-{
-    // path: 'employeeTable/:technology',
-    path:'home/:technologyName',
-    component: EmployeeTableComponent
-},
-{
-    path: '**',
-    component: NoPageFoundComponent
-},
+    {
+        path: '',
+        redirectTo: '/login',
+        pathMatch: 'full'
+    },
+    {
+        path: 'login',
+        component: LoginComponent
+    },
+    {
+        path: 'signUp',
+        component: SignUPComponent
+    },
+    {
+        path: 'home',
+        component: HomeComponent,
+    },
+    {
+        path: 'profile',
+        component: EmployeeDetailsComponent
+    },
+    {
+        // path: 'employeeTable/:technology',
+        path: 'home/:technologyName',
+        component: EmployeeTableComponent
+    },
+    {
+        path: '**',
+        component: NoPageFoundComponent
+    },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(APP_ROUTES)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(APP_ROUTES)],
+    exports: [RouterModule]
 })
-export class AppRoutingModule { 
-
-
-  
-}
+export class AppRoutingModule { }

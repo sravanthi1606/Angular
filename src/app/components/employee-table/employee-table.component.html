@@ -27,13 +27,12 @@
                         <ng-container *ngIf="mergedData.length > 0">
                             <tr *ngFor="let item of mergedData">
                                 <td>
-                                    <p style="color: red; cursor: pointer;" (click)="openModal(item)">{{
-                                        item.employee }}</p>
+                                    <p style="color: red; cursor: pointer;" (click)="openModal(item)">{{item.employee }}</p>
                                 </td>
                                 <td>{{ item.technology }}</td>
                                 <td>{{ item.experience }}</td>
                                 <td>{{ item.noticePeriod }}</td>
-                                <td>{{ item.verified }}</td>
+                                <td>{{ item.verified }} </td>
                                 <td>
                                     <button class="btn" (click)="openEditEmpModal(item)" pTooltip="Edit" tooltipPosition="bottom" ><i class="bi bi-pencil-square" ></i></button>
                                     <button class="btn" (click)="onDelete(item.id)" pTooltip="Delete" tooltipPosition="bottom" ><i class="bi bi-trash3-fill"></i></button>

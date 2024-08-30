@@ -17,18 +17,17 @@ export class NavbarComponent {
   public imgUrl = "https://static.vecteezy.com/system/resources/previews/008/214/517/non_2x/abstract-geometric-logo-or-infinity-line-logo-for-your-company-free-vector.jpg";
 
   currentUser: any;
+  isOpen = false;
 
   constructor(private employeeService: EmployeeServiceService, private router: Router,
     private modalService: NgbModal,private elementRef: ElementRef) { }
 
+  
   ngOnInit() {
     this.currentUser = this.employeeService.getCurrentUser().data
   }
   
 
-
-
-  isOpen = false;
 
   toggleDropdown() {
     this.isOpen = !this.isOpen;

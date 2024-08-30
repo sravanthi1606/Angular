@@ -23,7 +23,7 @@
                                 <small *ngIf="addEditForm.get('employee')?.errors?.['required']">Employee Name is a
                                     required field
                                 </small>
-                                <small *ngIf="addEditForm.get('employee')?.errors?.['maxLength']">Employee Name should
+                                <small *ngIf="addEditForm.get('employee')?.errors?.['maxLength']">{{addEditForm.get('employee')?.errors?.['maxLength']}} Employee Name should
                                     have max of 10 characters
                                 </small>
                                 <small *ngIf="addEditForm.get('employee')?.errors?.['minLength']">Employee Name should
@@ -274,7 +274,7 @@
                                 <div>
                                     <input type="checkbox" formControlName="verified" class="verify"
                                     [attr.disabled]="isVerifiedDisabled ? true : null" >
-                                    <label class="verified" >Verified {{addEditForm.get('verified')?.value}}</label>
+                                    <label class="verified" >Verified</label>
 
                                 </div>
                             </div>

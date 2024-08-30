@@ -1,7 +1,6 @@
 .header {
     display: flex;
     justify-content: space-between;
-    /* padding: 30px 10px; */
   }
   
   .logo {
@@ -12,7 +11,6 @@
   .loginicon {
     font-size: 40px;
     display: inline-block;
-    /* padding: 20px 0px; */
     margin: 20px 0px 0px 0px;
     color: rgb(32, 144, 184);
   }
@@ -21,25 +19,6 @@
     border: none;
     background-color: none;
   }
-  
-  /* Override Bootstrap dropdown styles */
-  /* Ensure you target the correct element */
-  /* .ngb-dropdown-toggle {
-      position: relative;
-      padding-right: 0; 
-    }
-    
-   .ngb-dropdown-toggle ::after {
-      content: none !important;
-      display: none !important;
-      visibility: hidden !important;
-    } */
-  
-  
-  /* .dropdown {
-      position: relative;
-      display: inline-block;
-    } */
   
   .dropdown-button {
     background: none;

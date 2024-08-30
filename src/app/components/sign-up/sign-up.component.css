@@ -77,3 +77,13 @@ input[type=number]::-webkit-inner-spin-button {
 .gender input{
     margin: 0px 0px 0px 10px;
 }
+
+:host ::ng-deep  .p-inputtext {
+    border-radius: 8px;
+    width: 100%;
+}
+
+/* :host ::ng-deep  .p-element {
+    border-radius: 8px;
+    width: 100%;
+} */

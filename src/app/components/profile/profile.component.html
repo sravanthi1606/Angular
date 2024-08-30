@@ -8,7 +8,7 @@
             <p>Username:</p>
         </div>
         <div class="col-lg-6">
-            <p> {{ currentUser[0].username }}</p>
+            <p> {{ currentUser[0].username | uppercase }}</p>
         </div>
         <div class="col-lg-6">
             <p>Email: </p>
@@ -20,7 +20,7 @@
             <p>Mobile Number: </p>
         </div>
         <div class="col-lg-6">
-            <p>{{ currentUser[0].mobileNumber }}</p>
+            <p>{{ currentUser[0].mobileNumber}}</p>
         </div>
         <div class="col-lg-6">
             <p>Gender : </p>

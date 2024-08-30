@@ -8,11 +8,12 @@
                     <div>
                         <form (ngSubmit)="onSubmitSignUP()" [formGroup]="signUpForm">
                             <div class="username">
+                                <!-- <input type="text" pInputText formControlName="username"  placeholder="User Name" /> -->
+
                                  <input type="text" name="userName" formControlName="username" class="form-control"
                                     id="exampleFormControlInput1" placeholder="User Name">
-                                <!-- <input type="text" pInputText name="userName" formControlName="username"
-                                    placeholder="User Name" /> -->
                             </div>
+
                             <div *ngIf="signUpForm.get('username')?.invalid && signUpForm.get('username')?.touched ">
                                 <small *ngIf="signUpForm.get('username')?.errors?.['required']">UserName is a required
                                     field</small>
@@ -29,8 +30,6 @@
                             <div class="email">
                                 <input type="email" name="email" formControlName="email" class="form-control"
                                     id="exampleFormControlInput1" placeholder="Email"> 
-                                <!-- <input type="text" pInputText name="email" formControlName="email"
-                                    placeholder="Email" /> -->
                             </div>
                             <div *ngIf="signUpForm.get('email')?.invalid && signUpForm.get('email')?.touched ">
                                 <small *ngIf="signUpForm.get('email')?.errors?.['required']">Email is a required
@@ -41,10 +40,10 @@
                             </div>
                             <br>
                             <div class="mobileNumber">
+                                <!-- <p-inputNumber inputId="integeronly" formControlName="mobilenumber" placeholder="Mobile Number"></p-inputNumber> -->
+
                                 <input type="number" name="mobileNumber" formControlName="mobilenumber"
                                     class="form-control" id="exampleFormControlInput1" placeholder="Mobile Number"> 
-                                <!-- <input type="text" pInputText name="mobileNumber" formControlName="mobilenumber"
-                                    placeholder="Mobile Number" /> -->
 
                             </div>
                             <div
@@ -69,8 +68,6 @@
                                  <input type="password" name="password" formControlName="password" class="form-control"
                                     id="exampleFormControlInput1" placeholder="Password"
                                     [(ngModel)]="signUpFormvalues.password"> 
-                                <!-- <p-password name="password" formControlName="password" [feedback]="false"
-                                    placeholder="Password" [(ngModel)]="signUpFormvalues.password"></p-password> -->
                             </div>
                             <div *ngIf="signUpForm.get('password')?.invalid && signUpForm.get('password')?.touched ">
                                 <small *ngIf="signUpForm.get('password')?.errors?.['required']">Password is a required
@@ -90,9 +87,6 @@
                                     class="form-control" id="exampleFormControlInput1" placeholder="Confirm Password"
                                     [(ngModel)]="signUpFormvalues.confirmPassword"
                                     (input)="passwordMatch(signUpFormvalues)"> 
-                                <!-- <p-password name="confirmPassword" formControlName="confirmPassword" [feedback]="false"
-                                    placeholder="Confirm Password" [(ngModel)]="signUpFormvalues.confirmPassword"
-                                    (input)="passwordMatch(signUpFormvalues)"></p-password> -->
 
                             </div>
                             <div>
@@ -108,11 +102,6 @@
                                     type="submit" [disabled]='!signUpForm.valid || !isPasswordMatching'>Sign Up</button>
                                 <button class="login" type="button" (click)="navigateLogin()">Cancel</button>
                             </div>
-
-                            <!-- <div>
-                                <input type="text" pInputText formControlName="text"/>
-                            </div> -->
-
 
                         </form>
                     </div>

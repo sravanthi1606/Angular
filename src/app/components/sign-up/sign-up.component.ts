@@ -4,6 +4,8 @@ import { Router, RouterLink } from '@angular/router';
 import { FormControl, FormGroup, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule, Location } from '@angular/common';
 import { EmployeeServiceService } from 'src/app/services/employee-service.service';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 
 interface User  {
@@ -19,7 +21,7 @@ interface User  {
   standalone:true,
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css'],
-  imports: [RouterLink, FormsModule, CommonModule,ReactiveFormsModule,],
+  imports: [RouterLink, FormsModule, CommonModule,ReactiveFormsModule,InputTextModule,InputNumberModule],
   // schemas: [ CUSTOM_ELEMENTS_SCHEMA]
 })
 

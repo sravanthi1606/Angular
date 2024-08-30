@@ -52,8 +52,8 @@ export class EmployeeTableComponent {
   }
   openAddEmpModal() {
     const modalRef = this.modalService.open(AddeditemployeeComponent, { size: 'lg', scrollable: false });
-    modalRef.componentInstance.technologies = this.techs
-    modalRef.componentInstance.technologName = this.technologyName
+    modalRef.componentInstance.technologies = this.techs;
+    modalRef.componentInstance.technologName = this.technologyName;
     modalRef.componentInstance.employeeAdded.subscribe(() => {
       this.getEmployees();
     });

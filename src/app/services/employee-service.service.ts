@@ -32,13 +32,9 @@ interface Employee {
 })
 export class EmployeeServiceService {
   
-  
-  
     private LoginKey = 'SignUpCredentials'
     private employeesKey = 'employeesData';
     private currentUserKey: any = 'currentUser';
-  
-  
   
     constructor(private router : Router) {}
   
